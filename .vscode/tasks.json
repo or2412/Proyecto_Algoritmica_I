@@ -1,0 +1,46 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C/C++: cl.exe compilación estricta (Windows)",
+            "command": "cl.exe",
+            "args": [
+                "/Zi",
+                "/EHsc",
+                "/W4",
+                "/std:c++20",
+                "/Fe:",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "${file}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": ["$msCompile"]
+        },
+        {
+            "type": "shell",
+            "label": "C/C++: g++ compilación estricta (Linux/Android)",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-std=c++20",
+                "-Wall",        // Exigencia total estilo /W4
+                "-Wextra",      // Más filtros de seguridad
+                "-Wconversion", // Control estricto de tipos y tamaños de memoria
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true // Al estar en Codespaces/Linux, este será el comando por defecto
+            }
+        }
+    ]
+}

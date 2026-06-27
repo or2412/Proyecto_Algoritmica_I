@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "1. Windows: Consola Externa",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "console": "externalTerminal", // ¡Aquí vuelve tu ventana flotante de Windows!
+            "preLaunchTask": "C/C++: cl.exe compilación estricta (Windows)"
+        },
+        {
+            "name": "2. Linux/Android: Terminal Integrada",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false, // Usa la pestaña de abajo para entornos web/móviles
+            "preLaunchTask": "C/C++: g++ compilación estricta (Linux/Android)"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+# === EJECUTABLES Y BINARIOS ===
+*.exe
+*.out
+*.app
+
+# === ARCHIVOS TEMPORALES DE COMPILACIÓN (MSVC/GCC) ===
+*.obj
+*.ilk
+*.pdb
+*.idb
+*.o
+*.gch
+
+# === ARCHIVOS DE CONFIGURACIÓN LOCAL ===
+.DS_Store
+Thumbs.db

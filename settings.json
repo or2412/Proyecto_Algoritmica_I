@@ -1,0 +1,127 @@
+{
+    "workbench.colorTheme": "Dark Modern",
+    "editor.fontFamily": "'Cascadia Mono', Consolas, 'Courier New', monospace",
+    "editor.tabSize": 3,
+    "editor.detectIndentation": false,
+    "editor.mouseWheelZoom": true,
+    "editor.minimap.autohide": "mouseover",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorStyle": "line",
+    "editor.cursorWidth": 2,
+
+    "workbench.colorCustomizations": {
+        "[Dark Modern]": {
+            "terminal.background": "#171717",
+            "terminal.foreground": "#DCDCDC",
+            "editorCursor.foreground": "#60DD22", // Cursor de tu color azul de tipos
+            "editor.foreground": "#DCDCDC",
+            "editor.background": "#171717",
+            "editor.selectionBackground": "#45484B",
+            "editorLineNumber.foreground": "#606F86",
+            "editorGutter.background": "#171717",
+            "editorBracketMatch.background": "#2A4C4C80",
+            "editorBracketMatch.border": "#00000000",
+            "editor.findMatchBackground": "#28490795",
+            "editor.findMatchHighlightBackground": "#07203F95",
+            "editor.wordHighlightBackground": "#07203F95",
+            "editor.lineHighlightBackground": "#1D1D1D",
+            "editor.lineHighlightBorder": "#1D1D1D",
+            "diffEditor.insertedTextBackground": "#31883160",
+            "diffEditor.removedTextBackground": "#A8414160",
+            "editorBracketHighlight.foreground1": "#B19696", // Nivel 1 (Color operador)
+            "editorBracketHighlight.foreground2": "#7E5657", // Nivel 2 (Color lila)
+            "editorBracketHighlight.foreground3": "#4B3535", // Nivel 3 (Color azul local)
+            "editorBracketHighlight.foreground4": "#B19696"  // Nivel 4 (Se repite el ciclo
+        },
+    },
+    "editor.tokenColorCustomizations": {
+        "[Dark Modern]": {
+            "comments":{
+                "foreground": "#39552B",
+                "fontStyle": ""
+            },
+            "strings": "#CE9277",
+            "numbers": "#B8DA9C",
+            "functions": "#DCDCAA",
+            "types": "#4EC9B0",
+            "textMateRules": [
+                {
+                    "scope": [
+                        "keyword",
+                        "keyword.control",
+                        "keyword.control.conditional",
+                        "keyword.control.repeat",
+                        "keyword.control.statement",
+                        "keyword.other.using.directive",
+                        "storage.type.namespace.directive",
+                    ],
+                    "settings": { "foreground": "#D8A0DF" } // 1. Forzamos a TODO el universo de palabras a ser Rosa (for, do, while, if)
+                },
+                {
+                    "scope": [
+                        "storage.type",
+                        "storage.type.primitive",
+                        "storage.type.built-in",
+                        "keyword.type"
+                    ],
+                    "settings": { "foreground": "#56A9D6" } // 2. Rescatamos SOLO los tipos de datos a tu Azul (int, float, char, void)
+                },
+                {
+                    "scope": ["constant.character.escape", "string.escape"],
+                    "settings": { "foreground": "#F5D596" }
+                },
+                {
+                    "scope": [
+                        "keyword.operator",
+                        "storage.modifier.op",
+                        "punctuation.separator",
+                        "punctuation.terminator",
+                        "punctuation.section.block",
+                        "punctuation.section.brackets",
+                        "punctuation.section.parentheses",
+                        "punctuation.definition.parameters"
+                    ],
+                "settings": { "foreground": "#7E5657" }
+                },
+                {
+                    "scope": [
+                        "meta.preprocessor", 
+                        "keyword.control.directive",
+                        "keyword.control.directive.include",
+                        "keyword.control.directive.define"       
+                    ],
+                    "settings": { "foreground": "#C5A3DC" }
+                },
+                {
+                    "scope": [
+                        "keyword.control.conditional",
+                        "keyword.control.repeat",
+                        "keyword.control.statement"
+                    ],
+                    "settings": { "foreground": "#D8A0DF" } 
+                }
+            ]
+        },
+    },
+    "editor.semanticTokenColorCustomizations": {
+        "[Dark Modern]": {
+            "enabled": true,
+            "rules": {
+                "variable.local": "#A8D8FF",
+                "variable.global": "#DCDCDC",
+                "parameter": "#9A9A9A",
+                "macro": "#BEB7FF",
+                "class": "#4EC9B0",
+                "struct": "#4EC9B0",
+                "type": "#4EC9B0",
+                "function": "#DCDCAA",
+                "method": "#DCDCAA",
+                "namespace": "#C8C8C8",
+                "keyword.control": "#D8A0DF",
+                "keyword": "#D8A0DF",
+                "operator": "#6A6A6A",
+            }
+        },
+    }
+}
