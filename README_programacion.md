@@ -29,14 +29,14 @@ Los viajes guardan información vital para el servicio. Se usa la clase `Servici
 + `codOp`. Operador asignado (se identificará con el código del operador).
 + `pasajeros`. Cantidad de pasajeros.
 + `destino`. Destino. Por el momento solo como un `string` estático. *Por implementar: que defina el tiempo de viaje estimado.*
-+ `estado`. Estado: `Activo`, `Completado`.
++ `estado`. Estado: `Pendiente`,`Activo`, `Completado`.
 
 ## 4. VECTORES (NOMBRES COLECTIVOS)
 Se trabajarán con tres grupos: `padronUnid`, `padronOp`, `servActivos`.
 
 ## 5. FUNCIONES
 + `mostrarPadron()`: Mostrará el padrón de unidades, el de operadores o ambos.
-+ `programarServ()`: Pide los datos para la creación de un objeto `Servicio`. Solo permiten tomar operadores y unidades con **estado disponible**.
-+ `procesarArribo()`: Procesa la llegada del bus y manda a la unidad y su operador a un periodo de descanso.
++ `programarServ()`: Pide los datos para la creación de un objeto `Servicio`. Solo permiten tomar operadores y unidades con **estado disponible**. Activará el estado como `Pendiente`.
++ `procesarSalida()` y `procesarArribo()`: Procesa la salida (`Servicio.estado=Activo`) y llegada (`Servicio.estado=Completado`) del bus y manda a la unidad y su operador a un periodo de descanso.
 + `registrarUnidad()` y `registrarOperador()`: Estas funciones agreguen a nuevo personal y autobuses.
 + *`simularPasoTiempo()`: Función aún sin decisión de usar. Será usada para simular el paso del tiempo de no poderse leer los segundos en tiempo real.*
