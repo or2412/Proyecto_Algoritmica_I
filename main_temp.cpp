@@ -148,11 +148,11 @@ void printTitle(const string &title, int cat){
 					centros=relleno;
 				}
 			}
-			cout<<"  ╔"<<fill(anchoBorde-6, "═")   <<"╗  "<<endl;
-			cout<<"╔═╝ "<<fill(anchoBorde-8, "─") <<" ╚═╗"<<endl;
-			cout<<"║ │"<<centros<<newTitle<<centros<<"│ ║"<<endl;
-			cout<<"╚═╗ "<<fill(anchoBorde-8, "─") <<" ╔═╝"<<endl;
-			cout<<"  ╚"<<fill(anchoBorde-6, "═")   <<"╝  "<<endl;
+			cout<<"  ╔"<<fill(anchoBorde-6, "═")   <<"╗  \n";
+			cout<<"╔═╝ "<<fill(anchoBorde-8, "─") <<" ╚═╗\n";
+			cout<<"║ │"<<centros<<newTitle<<centros<<"│ ║\n";
+			cout<<"╚═╗ "<<fill(anchoBorde-8, "─") <<" ╔═╝\n";
+			cout<<"  ╚"<<fill(anchoBorde-6, "═")   <<"╝  \n";
 			break;
 		}
 		case 1:{
@@ -173,9 +173,9 @@ void printTitle(const string &title, int cat){
 					centros=relleno;
 				}
 			}
-			cout<<"  ╔"<<fill(anchoBorde-2, "═")<<"╗"<<endl;
-			cout<<"► ║"<<centros<<title<<centros<<"║"<<endl;
-			cout<<"  ╚"<<fill(anchoBorde-2, "═")<<"╝"<<endl;
+			cout<<"  ╔"<<fill(anchoBorde-2, "═")<<"╗\n";
+			cout<<"► ║"<<centros<<title<<centros<<"║\n";
+			cout<<"  ╚"<<fill(anchoBorde-2, "═")<<"╝\n";
 			break;
 		}
 		case 2:{
@@ -196,9 +196,9 @@ void printTitle(const string &title, int cat){
 					centros=relleno;
 				}
 			}
-			cout<<"   ┌"<<fill(anchoBorde-2, "─")<<"┐"<<endl;
-			cout<<"►► │"<<centros<<title<<centros<<"│"<<endl;
-			cout<<"   └"<<fill(anchoBorde-2, "─")<<"┘"<<endl;
+			cout<<"   ┌"<<fill(anchoBorde-2, "─")<<"┐\n";
+			cout<<"►► │"<<centros<<title<<centros<<"│\n";
+			cout<<"   └"<<fill(anchoBorde-2, "─")<<"┘\n";
 			break;
 		}
 		case 3:{
@@ -350,34 +350,75 @@ void cargarSERVICIOS(vector<Servicio>& padron){
 }
 
 // Guarda los datos de la RAM al disco duro al salir
-void guardarDatos(vector<Unidad>& padron) {
-   ofstream archivo(UNIDADES);
-    
+void guardarUNIDADES(vector<Unidad>& padron){
+   ofstream archivo(UNIDADES, ios::out);
+   cout<<"\nGuardando datos de UNIDADES"; loadingDots(3, 150);
+   
    if (archivo.is_open()){
-      for (size_t i = 0; i < padron.size(); i++) {
-         archivo << padron[i].getPlaca() << ","
-                 << padron[i].getCodigo() << ","
-                 << padron[i].getCapacidad() << ","
-                 << padron[i].getEstado() << "\n";
+      for (size_t i=0; i<padron.size(); i++){
+         archivo<<padron[i].getPlaca()<<","
+                <<padron[i].getCodigo()<<","
+                <<padron[i].getCapacidad()<< ","
+                <<padron[i].getEstado()<<"\n";
       }
       archivo.close();
-      cout << "\n[OK] Datos guardados exitosamente. Cierre seguro.\n";
+      cout<<"\r[OK] Datos guardados exitosamente. Cierre seguro."<<endl;
    }
    else{
-      cout << "\n[ERROR CRITICO] No se pudo guardar en el disco.\n";
+      cout<<"\r[ERROR CRITICO] No se pudo guardar en el disco."<<endl;
+   }
+}
+
+void guardarOPERADORES(vector<Operador>& padron){
+   ofstream archivo(OPERADORES, ios::out);
+   cout<<"\nGuardando datos de OPERADORES"; loadingDots(3, 150);
+   
+   if (archivo.is_open()){
+      for (size_t i=0; i<padron.size(); i++){
+         archivo<<padron[i].getCodigo()<<","
+                <<padron[i].getDNI()<<","
+                <<padron[i].getNombreCompleto()<<","
+                <<padron[i].getEstado()<<"\n";
+      }
+      archivo.close();
+      cout<<"\r[OK] Datos guardados exitosamente. Cierre seguro."<<endl;
+   }
+   else{
+      cout<<"\r[ERROR CRITICO] No se pudo guardar en el disco."<<endl;
+   }
+}
+
+void guardarSERVICIOS(vector<Servicio>& historial){
+   ofstream archivo(SERVICIOS, ios::out);
+   cout<<"\nGuardando datos de SERVICIOS"; loadingDots(3, 150);
+   
+   if (archivo.is_open()){
+      for (size_t i=0; i<historial.size(); i++){
+         archivo<<historial[i].getID()<<","
+                <<historial[i].getCodigoUnid()<<","
+                <<historial[i].getCodigoOp()<< ","
+                <<historial[i].getNumPasajeros()<< ","
+                <<historial[i].getDestino()<< ","
+                <<historial[i].getEstado()<<"\n";
+      }
+      archivo.close();
+      cout<<"\r[OK] Datos guardados exitosamente. Cierre seguro."<<endl;
+   }
+   else{
+      cout<<"\r[ERROR CRITICO] No se pudo guardar en el disco."<<endl;
    }
 }
 
 // === LOGICA DE NEGOCIO Y FUNCIONALIDADES ===
 void mostrarPadronUnid(vector<Unidad>& padron){
    clearScreen();
-   cout<<"=== PADRON DE UNIDADES ==="<<endl<<endl;
+   cout<<"=== PADRON DE UNIDADES ===\n\n";
    if (padron.empty()){
       cout<<"¡¡¡No hay unidades registradas!!!"<<endl;
    }
    else{
-      cout<<left<<setw(15)<<"PLACA"<<setw(10)<<"CODIGO"<<setw(15)<<"CAPACIDAD"<<setw(20)<<"ESTADO"<<endl;
-      cout<<"--------------------------------------------------"<<endl;
+      cout<<left<<setw(10)<<"PLACA"<<setw(10)<<"CODIGO"<<setw(15)<<"CAPACIDAD"<<setw(20)<<"ESTADO"<<endl;
+      cout<<fill(55, "-")<<"\n";
       for (size_t i=0; i<padron.size(); i++){
          // Colores basicos ASCII  (Verde: "Disponible", Rojo: "En ruta", Amarillo: "en reposo")
          if(padron[i].getEstado()=="Disponible") cout<<"\033[32m";
@@ -385,7 +426,7 @@ void mostrarPadronUnid(vector<Unidad>& padron){
          else cout<<"\033[33m";
          //Información coloreada
          cout<<left
-         <<setw(15)<<padron[i].getPlaca() 
+         <<setw(10)<<padron[i].getPlaca() 
          <<setw(10)<<padron[i].getCodigo() 
          <<setw(15)<<padron[i].getCapacidad() 
          <<setw(20)<<padron[i].getEstado()<<"\033[0m"<<endl;
@@ -396,13 +437,13 @@ void mostrarPadronUnid(vector<Unidad>& padron){
 
 void mostrarPadronOp(vector<Operador>& padron){
    clearScreen();
-   cout<<"=== PADRON DE OPERADORES ==="<<endl<<endl;
+   cout<<"=== PADRON DE OPERADORES ===\n\n";
    if (padron.empty()){
       cout<<"¡¡¡No hay operadores registrados!!!"<<endl;
    }
    else{
-      cout<<left<<setw(10)<<"CODIGO"<<setw(10)<<"DNI"<<setw(40)<<"NOMBRE COMPLETO"<<setw(20)<<"ESTADO"<<endl;
-      cout<<"--------------------------------------------------"<<endl;
+      cout<<left<<setw(5)<<"CODIGO"<<setw(10)<<"DNI"<<setw(40)<<"NOMBRE COMPLETO"<<setw(20)<<"ESTADO"<<endl;
+      cout<<fill(75, "-")<<"\n";
       for (size_t i=0; i<padron.size(); i++){
          // Colores basicos ASCII  (Verde: "Disponible", Rojo: "En ruta", Amarillo: "en reposo")
          if(padron[i].getEstado()=="Disponible") cout<<"\033[32m";
@@ -410,10 +451,38 @@ void mostrarPadronOp(vector<Operador>& padron){
          else cout<<"\033[33m";
          //Información coloreada
          cout<<left
-         <<setw(10)<<padron[i].getCodigo() 
+         <<setw(5)<<padron[i].getCodigo() 
          <<setw(10)<<padron[i].getDNI() 
          <<setw(40)<<padron[i].getNombreCompleto() 
          <<setw(20)<<padron[i].getEstado()<<"\033[0m"<<endl;
+        }
+    }
+    pausar();
+}
+
+void mostrarHistorialServ(vector<Servicio>& historial){
+   clearScreen();
+   cout<<"=== HISTORIAL DE SERVICIOS ===\n\n";
+   if (historial.empty()){
+      cout<<"¡¡¡No hay servicios registrados!!!"<<endl;
+   }
+   else{
+      cout<<left<<setw(5)<<"ID"<<setw(14)<<"COD. UNID."<<setw(12)<<"COD. OP."
+          <<setw(12)<<"N° PAS."<<setw(20)<<"DESTINO"<<setw(20)<<"ESTADO"<<endl;
+      cout<<fill(75, "-")<<"\n";
+      for (size_t i=0; i<historial.size(); i++){
+         // Colores basicos ASCII  (Verde: "Disponible", Rojo: "En ruta", Amarillo: "en reposo")
+         if(historial[i].getEstado()=="Disponible") cout<<"\033[32m";
+         else if(historial[i].getEstado()=="En Ruta") cout<<"\033[31m";
+         else cout<<"\033[33m";
+         //Información coloreada
+         cout<<left
+         <<setw(5)<<historial[i].getID() 
+         <<setw(14)<<historial[i].getCodigoUnid() 
+         <<setw(12)<<historial[i].getCodigoOp() 
+         <<setw(12)<<historial[i].getNumPasajeros() 
+         <<setw(20)<<historial[i].getDestino() 
+         <<setw(20)<<historial[i].getEstado()<<"\033[0m"<<endl;
         }
     }
     pausar();
@@ -515,7 +584,7 @@ void registrarOperador(vector<Operador>& padron){
    string apellidos{};
 
    cout<<"=== REGISTRO DE NUEVO OPERADOR ==="<<endl<<endl;
-   cout<<"CODIGO DE OPERADOR (ej. 098): "; cin>>cod;
+   cout<<"CODIGO DE OPERADOR (ej. 9NN): "; cin>>cod;
    cout<<"DNI / C.E.: "; cin>>dni;
    cin.ignore();
    cout<<"-- NOMBRE COMPLETO --"<<endl;
@@ -568,7 +637,7 @@ int main()
             break;
          } 
          case 2:{
-            //mostrarHistorialServicios(historialServ);
+            mostrarHistorialServ(historialServ);
             break;
          }
          case 3:{
@@ -583,7 +652,9 @@ int main()
          }
          case 0:{
             cout << "\nIniciando rutina de apagado...\n";
-            guardarDatos(padronUnid); // Guardado final
+            guardarUNIDADES(padronUnid);
+            guardarOPERADORES(padronOp);
+            guardarSERVICIOS(historialServ);
             break;
          }
          default:{
