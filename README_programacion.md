@@ -16,7 +16,7 @@ Las unidades tienen características que se encuentran en su clase `Unidad`:
 
 ## 2. OPERADOR (CHOFERES)
 Los operadores tienen características que se encuentran en su clase `Operador`:
-+ `cod`. Código: `0XX`.
++ `cod`. Código: `9XX`.
 + `dni`. DNI: `NNNNNNNN`.
 + `nombres`. Nombres.
 + `apellidos`. Apellidos.
@@ -32,7 +32,7 @@ Los viajes guardan información vital para el servicio. Se usa la clase `Servici
 + `estado`. Estado: `Pendiente`,`Activo`, `Completado`.
 
 ## 4. VECTORES (NOMBRES COLECTIVOS)
-Se trabajarán con tres grupos: `padronUnid`, `padronOp`, `servActivos`.
+Se trabajarán con tres grupos de vectores temporales: `padronUnid`, `padronOp`, `historialServ`. Con ellos se realizarán todas las funciones dentro del sistema.
 
 ## 5. FUNCIONES
 + `mostrarPadron()`: Mostrará el padrón de unidades, el de operadores o ambos.
@@ -40,3 +40,10 @@ Se trabajarán con tres grupos: `padronUnid`, `padronOp`, `servActivos`.
 + `procesarSalida()` y `procesarArribo()`: Procesa la salida (`Servicio.estado=Activo`) y llegada (`Servicio.estado=Completado`) del bus y manda a la unidad y su operador a un periodo de descanso.
 + `registrarUnidad()` y `registrarOperador()`: Estas funciones agreguen a nuevo personal y autobuses.
 + *`simularPasoTiempo()`: Función aún sin decisión de usar. Será usada para simular el paso del tiempo de no poderse leer los segundos en tiempo real.*
++ `cargarUNIDADES()`, `cargarOPERADORES()`, `cargarSERVICIOS`: Esta función cargará los datos guardados en `unidades.txt`, `operadores.txt` y `historial_serv.txt` dentro de los vectores temporales `padronUnid`, `padronOp` y `historialServ`, respectivamente.
+
+## 6. OTRAS VARIABLES
++ `UNIDADES`: Reemplaza a `unidades.txt`.
++ `OPERADORES`: Reemplaza a `operadores.txt`.
++ `SERVICIOS`: Reemplaza a `historial_serv.txt`.
++ `datoLinea` y `linea`: Variables para facilitar la lectura de los archivos y su guardado en los vectores respectivos.
