@@ -1,0 +1,8 @@
+Terminar la función de paso de tiempo y compararla con una posible función completarDescanso() en cuanto a facilidad de implementación y funcionalidad.
+Al momento de realizar nuevos registros de operador y unidad, que los códigos que se asignen se validen con los ya existentes para que no se repitan.
+Terminar todo tipo de validación de cualquier dato ingresado por el usuario (esto porque en algunas partes falta).
+Mejorar la estética aprovechando de mejor forma las funciones estéticas que hay en main_temp.cpp
+Proponer una mejora estética y visualmente agradable para la función printTitle()
+Armar un menú en la opción 1, que permita elegir entre ver el padron de unidades y padron de operadores.
+Configurar que todos los textos ingresados por el usuario se guarden en los archivos sin tildes y todo en mayúsculas, excepto el atributo Estado.
+Al mostrar los padrones e historial_serv que estos se muestren de forma ordenada por código o ID.
