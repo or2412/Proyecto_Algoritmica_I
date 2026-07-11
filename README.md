@@ -12,7 +12,7 @@ Las unidades tienen características que se encuentran en su clase `Unidad`:
    + `3XX`: Para unidades grandes y largas distancias. Tomar de referencia un bus interprovincial. Aunque no puedes llevar tantas personas, garantiza una mejor experiencia a los pasajeros. \
    **Capacidad:** 39 asientos.
 + `capacidad`. Capacidad (dependiendo de cada tipo).
-+ `estado`. Estado: `Disponible`, `En ruta`, `En reposo`.
++ `estado`. Estado: `Disponible`, `Asignado`, `En reposo`.
 
 ## 2. OPERADOR (CHOFERES)
 Los operadores tienen características que se encuentran en su clase `Operador`:
@@ -20,7 +20,7 @@ Los operadores tienen características que se encuentran en su clase `Operador`:
 + `dni`. DNI: `NNNNNNNN`.
 + `nombres`. Nombres.
 + `apellidos`. Apellidos.
-+ `estado`. Estado: `Disponible`, `En ruta`, `En reposo`.
++ `estado`. Estado: `Disponible`, `Asignado`, `En reposo`.
 
 ## 3. SERVICIO (VIAJES)
 Los viajes guardan información vital para el servicio. Se usa la clase `Servicio`:
@@ -47,3 +47,4 @@ Se trabajarán con tres grupos de vectores temporales: `padronUnid`, `padronOp`,
 + `OPERADORES`: Reemplaza a `operadores.txt`.
 + `SERVICIOS`: Reemplaza a `historial_serv.txt`.
 + `datoLinea` y `linea`: Variables para facilitar la lectura de los archivos y su guardado en los vectores respectivos.
++ Todos los `index`: Buscan ubicar posiciones estratégicas necesarias para el correcto funcionamiento del sistema.
