@@ -1,0 +1,10 @@
+F3V-420,101,8,Disponible
+A1B-567,201,45,Asignado
+W9Z-881,301,39,Asignado
+M4T-202,202,45,En reposo
+B7C-109,102,8,Disponible
+C9X-304,103,8,Asignado
+D2F-711,203,45,Disponible
+E8G-922,302,39,En reposo
+F1H-533,204,45,Asignado
+G5J-644,303,39,Disponible
