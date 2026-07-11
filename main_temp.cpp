@@ -450,10 +450,10 @@ void mostrarPadronUnid(vector<Unidad>& padron){
       cout<<"¡¡¡No hay unidades registradas!!!"<<endl;
    }
    else{
-      cout<<left<<setw(10)<<"PLACA"<<setw(10)<<"CODIGO"<<setw(15)<<"CAPACIDAD"<<setw(20)<<"ESTADO"<<endl;
-      cout<<fill(55, "-")<<"\n";
+      cout<<left<<setw(10)<<"PLACA"<<setw(10)<<"CODIGO"<<setw(15)<<"CAPACIDAD"<<setw(11)<<"ESTADO"<<endl;
+      cout<<fill(46, "-")<<"\n";
       for (size_t i=0; i<padron.size(); i++){
-         // Colores basicos ASCII  (Verde: "Disponible", Rojo: "Asignado", Amarillo: "en reposo")
+         // Colores basicos ASCII  (Verde: "Disponible", Rojo: "Asignado", Amarillo: "En reposo")
          if(padron[i].getEstado()=="Disponible") cout<<"\033[32m";
          else if(padron[i].getEstado()=="Asignado") cout<<"\033[31m";
          else cout<<"\033[33m";
@@ -462,7 +462,7 @@ void mostrarPadronUnid(vector<Unidad>& padron){
          <<setw(10)<<padron[i].getPlaca() 
          <<setw(10)<<padron[i].getCodigo() 
          <<setw(15)<<padron[i].getCapacidad() 
-         <<setw(20)<<padron[i].getEstado()<<"\033[0m"<<endl;
+         <<setw(11)<<padron[i].getEstado()<<"\033[0m"<<endl;
         }
     }
     pausar();
@@ -475,7 +475,7 @@ void mostrarPadronOp(vector<Operador>& padron){
       cout<<"¡¡¡No hay operadores registrados!!!"<<endl;
    }
    else{
-      cout<<left<<setw(5)<<"CODIGO"<<setw(10)<<"DNI"<<setw(40)<<"NOMBRE COMPLETO"<<setw(20)<<"ESTADO"<<endl;
+      cout<<left<<setw(10)<<"CODIGO"<<setw(12)<<"DNI"<<setw(40)<<"NOMBRE COMPLETO"<<setw(20)<<"ESTADO"<<endl;
       cout<<fill(75, "-")<<"\n";
       for (size_t i=0; i<padron.size(); i++){
          // Colores basicos ASCII  (Verde: "Disponible", Rojo: "Asignado", Amarillo: "En reposo")
@@ -484,8 +484,8 @@ void mostrarPadronOp(vector<Operador>& padron){
          else cout<<"\033[33m";
          //Información coloreada
          cout<<left
-         <<setw(5)<<padron[i].getCodigo() 
-         <<setw(10)<<padron[i].getDNI() 
+         <<setw(10)<<padron[i].getCodigo() 
+         <<setw(12)<<padron[i].getDNI() 
          <<setw(40)<<padron[i].getNombreCompleto() 
          <<setw(20)<<padron[i].getEstado()<<"\033[0m"<<endl;
         }
@@ -500,7 +500,7 @@ void mostrarHistorialServ(vector<Servicio>& historial){
       cout<<"¡¡¡No hay servicios registrados!!!"<<endl;
    }
    else{
-      cout<<left<<setw(5)<<"ID"<<setw(14)<<"COD. UNID."<<setw(12)<<"COD. OP."<<setw(12)<<"N° PAS."<<setw(20)<<"DESTINO"<<setw(20)<<"ESTADO"<<endl;
+      cout<<left<<setw(5)<<"ID"<<setw(14)<<"COD. UNID."<<setw(12)<<"COD. OP."<<setw(13)<<"N° PAS."<<setw(20)<<"DESTINO"<<setw(20)<<"ESTADO"<<endl;
       cout<<fill(75, "-")<<"\n";
       for (size_t i=0; i<historial.size(); i++){
          // Colores basicos ASCII  (Verde: "Completado", Rojo: "Activo", Amarillo: "Pendiente")
@@ -525,7 +525,6 @@ void programarNuevoServ(vector<Unidad>& padronUnid, vector<Operador>& padronOp, 
    int pasajeros{};
    string destino{};
    printTitle("PROGRAMAR NUEVO SERVICIO", 1);
-   cin.ignore();
    cout<<"DESTINO: "; getline(cin, destino);
    cout<<"N° PASAJEROS: "; cin>>pasajeros;
 
@@ -557,13 +556,13 @@ void programarNuevoServ(vector<Unidad>& padronUnid, vector<Operador>& padronOp, 
    }
 
    //Mostrar y seleccionar Unidad
-   cout<<"\n=== UNIDADES DISPONIBLES ===\n";
-   cout<<left<<setw(10)<<"CODIGO"<<setw(15)<<"PLACA"<<setw(15)<<"CAPACIDAD"<<endl;
+   cout<<"\n=== UNIDADES DISPONIBLES ===\n\n";
+   cout<<left<<setw(10)<<"CODIGO"<<setw(15)<<"PLACA"<<setw(11)<<"CAPACIDAD"<<endl;
    cout<<fill(40, "-")<<"\n";
    for (size_t i=0; i<indexUnid.size(); i++){
       cout<<left<<setw(10)<<padronUnid[indexUnid[i]].getCodigo()
                 <<setw(15)<<padronUnid[indexUnid[i]].getPlaca()
-                <<setw(15)<<padronUnid[indexUnid[i]].getCapacidad()<<endl;
+                <<setw(11)<<padronUnid[indexUnid[i]].getCapacidad()<<endl;
    }
    int codUnidE{}, indexUnidE=-1;
    bool validUnid=false;
@@ -580,7 +579,7 @@ void programarNuevoServ(vector<Unidad>& padronUnid, vector<Operador>& padronOp, 
    } while (!validUnid);
 
    //Mostrar y seleccionar Operador
-   cout<<"\n=== OPERADORES DISPONIBLES ===\n";
+   cout<<"\n=== OPERADORES DISPONIBLES ===\n\n";
    cout<<left<<setw(10)<<"CODIGO"<<setw(12)<<"DNI"<<setw(40)<<"NOMBRE COMPLETO"<<endl;
    cout<<fill(62, "-")<<"\n";
    for (size_t i=0; i<indexOp.size(); i++){
