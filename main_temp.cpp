@@ -54,6 +54,8 @@ class Operador{
    //getters
    int getCodigo() {return cod;}
    int getDNI() {return dni;}
+   string getNombres() {return nombres;}
+   string getApellidos() {return apellidos;}
    string getNombreCompleto(){
       string fullName=nombres+" "+apellidos;
       return fullName;
@@ -257,6 +259,36 @@ void loadingDots(int repeat, unsigned int delay){
    }
 }
 
+void menuPrincipal(){
+   clearScreen();
+   printTitle("SISTEMA DE GESTION DE TRANSPORTE", 0);
+   cout<<"  ├╴[1] Mostrar Padron General\n";
+   cout<<"  ├╴[2] Mostrar Historial de Servicios\n";
+   cout<<"  ├╴[3] Modulo de Operaciones (Programar/Despachar)\n";
+   cout<<"  ├╴[4] Modulo de Registros (Unidades/Operadores)\n";
+   cout<<"  └╴[0] Salir y Guardar\n";
+   cout<<"\n►► Ingresar opcion -→ ";
+}
+
+void menuOperaciones(){
+   clearScreen();
+   printTitle("MODULO DE OPERACIONES", 1);
+   cout<<"  ├╴[1] Programar nuevo servicio\n";
+   cout<<"  ├╴[2] Procesar salida de bus (En Ruta)\n";
+   cout<<"  ├╴[3] Procesar arribo de bus (Completado)\n";
+   cout<<"  └╴[0] Regresar al menu principal\n";
+   cout<<"\n►► Ingresar opcion -→ ";
+}
+
+void menuRegistros(){
+   clearScreen();
+   printTitle("MODULO DE REGISTROS", 1);
+   cout<<"  ├╴[1] Registrar nueva Unidad\n";
+   cout<<"  ├╴[2] Registrar nuevo Operador\n";
+   cout<<"  └╴[0] Regresar al menu principal\n";
+   cout<<"\n►► Ingresar opcion -→ ";
+}
+
 void pausar(){
    cout<<"\nPresione ENTER para continuar...";
    cin.ignore();
@@ -377,7 +409,8 @@ void guardarOPERADORES(vector<Operador>& padron){
       for (size_t i=0; i<padron.size(); i++){
          archivo<<padron[i].getCodigo()<<","
                 <<padron[i].getDNI()<<","
-                <<padron[i].getNombreCompleto()<<","
+                <<padron[i].getNombres()<<","
+                <<padron[i].getApellidos()<<","
                 <<padron[i].getEstado()<<"\n";
       }
       archivo.close();
@@ -570,7 +603,7 @@ void programarNuevoServ(vector<Unidad>& padronUnid, vector<Operador>& padronOp, 
    } while (!validOp);
 
    //Creación del servicio y actualización de estados
-   int id=historial.size()+1; 
+   int id=(int)(historial.size())+1; 
    historial.push_back(Servicio(id, codUnidE, codOpE, pasajeros, destino, "Pendiente"));
    padronUnid[indexUnidE].setEstado("Asignado");
    padronOp[indexOpE].setEstado("Asignado");
@@ -579,7 +612,7 @@ void programarNuevoServ(vector<Unidad>& padronUnid, vector<Operador>& padronOp, 
    pausar();
 }
 
-void procesarSalida(vector<Unidad>& padronUnid, vector<Operador>& padronOp, vector<Servicio>& historial){
+void procesarSalida(vector<Servicio>& historial){
    clearScreen();
    printTitle("PROCESAR SALIDA DE SERVICIO", 1);
 
@@ -758,65 +791,92 @@ int main()
    vector<Operador> padronOp;
    vector<Servicio> historialServ;
    
-   // Carga Inicial
+   printTitle("CARGA INICIAL", 0);
    cargarUNIDADES(padronUnid);
    cargarOPERADORES(padronOp);
    cargarSERVICIOS(historialServ);
+   pausar();
 
-   int opcion;
-   do{
-      clearScreen();
-      printTitle("SISTEMA DE GESTION DE TRANSPORTE", 0);
-      cout<<"1. Mostrar Padron General\n";
-      cout<<"2. Mostrar Historial de Servicios\n";
-      cout<<"3. Asignar Viaje (Operaciones)\n";
-      cout<<"4. Registrar nueva unidad y operador\n";
-      cout<<"0. Salir y Guardar\n";
-      cout<<"---------------------------------------\n";
-      cout<<"Seleccione una opcion: ";
-      
-      // Manejo robusto de errores si el usuario ingresa letras
-      if (!(cin >> opcion)) {
-         cin.clear(); 
-         cin.ignore(10000, '\n'); 
-         opcion = 0; 
-      }
+   string teclado{}; 
+   char opc{};
 
-      switch (opcion) {
-         case 1:{
+   // Bucle menú principal
+   do {
+      menuPrincipal();
+      getline(cin, teclado);
+      opc='X';
+      if (teclado.size()==1) opc=teclado[0]; // Solo toma el caracter si escribieron exactamente 1 dígito
+
+      switch (opc) {
+         case '1':{
             mostrarPadronUnid(padronUnid);
             cout<<endl;
             mostrarPadronOp(padronOp);
             break;
          } 
-         case 2:{
+         case '2':{
             mostrarHistorialServ(historialServ);
             break;
          }
-         case 3:{
-            //asignarViaje(padronUnid, padronOp, historialServ);
+         case '3':{
+            string tecladoOps{};
+            char opcOps{};
+            do {
+               menuOperaciones();
+               getline(cin, tecladoOps);
+               opcOps='X';
+               if (tecladoOps.size()==1) opcOps=tecladoOps[0];
+
+               switch(opcOps){
+                  case '1': programarNuevoServ(padronUnid, padronOp, historialServ); break;
+                  case '2': procesarSalida(historialServ); break;
+                  case '3': procesarArribo(padronUnid, padronOp, historialServ); break;
+                  case '0': break; // Sale del sub-menú sin hacer nada
+                  default: 
+                     cout<<"\n\033[31m[ERROR] Opcion no valida. Intente de nuevo...\033[0m\n"; 
+                     pausar(); 
+                     break;
+               }
+            } while(opcOps!='0');
             break;
          }
-         case 4:{
-            registrarUnidad(padronUnid);
-            cout<<endl;
-            registrarOperador(padronOp);
+         case '4':{
+            string tecladoReg{};
+            char opcReg{};
+            do {
+               menuRegistros();
+               getline(cin, tecladoReg);
+               opcReg='X';
+               if (tecladoReg.size()==1) opcReg=tecladoReg[0];
+
+               switch(opcReg){
+                  case '1': registrarUnidad(padronUnid); break;
+                  case '2': registrarOperador(padronOp); break;
+                  case '0': break; // Sale del sub-menu sin hacer nada
+                  default: 
+                     cout<<"\n\033[31m[ERROR] Opcion no valida. Intente de nuevo...\033[0m\n"; 
+                     pausar(); 
+                     break;
+               }
+            } while(opcReg!='0');
             break;
          }
-         case 0:{
-            cout << "\nIniciando rutina de apagado...\n";
+         case '0':{
+            cout<<"\nIniciando rutina de apagado...\n";
             guardarUNIDADES(padronUnid);
             guardarOPERADORES(padronOp);
             guardarSERVICIOS(historialServ);
+            Sleep(250); // Pausa dramática
             break;
          }
          default:{
-            cout << "\n[ERROR] Opcion no valida.\n";
+            cout<<"\n\033[31m[ERROR] Opcion no valida. Intente de nuevo...\033[0m\n";
             pausar();
             break;
          }
       }
-   } while(opcion!=0);
+   } while(opc!='0');
 
+   cout<<"\nFIN DEL PROGRAMA\n";
    return 0;
 }
