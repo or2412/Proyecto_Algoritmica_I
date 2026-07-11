@@ -420,9 +420,9 @@ void mostrarPadronUnid(vector<Unidad>& padron){
       cout<<left<<setw(10)<<"PLACA"<<setw(10)<<"CODIGO"<<setw(15)<<"CAPACIDAD"<<setw(20)<<"ESTADO"<<endl;
       cout<<fill(55, "-")<<"\n";
       for (size_t i=0; i<padron.size(); i++){
-         // Colores basicos ASCII  (Verde: "Disponible", Rojo: "En ruta", Amarillo: "en reposo")
+         // Colores basicos ASCII  (Verde: "Disponible", Rojo: "Asignado", Amarillo: "en reposo")
          if(padron[i].getEstado()=="Disponible") cout<<"\033[32m";
-         else if(padron[i].getEstado()=="En Ruta") cout<<"\033[31m";
+         else if(padron[i].getEstado()=="Asignado") cout<<"\033[31m";
          else cout<<"\033[33m";
          //Información coloreada
          cout<<left
@@ -445,9 +445,9 @@ void mostrarPadronOp(vector<Operador>& padron){
       cout<<left<<setw(5)<<"CODIGO"<<setw(10)<<"DNI"<<setw(40)<<"NOMBRE COMPLETO"<<setw(20)<<"ESTADO"<<endl;
       cout<<fill(75, "-")<<"\n";
       for (size_t i=0; i<padron.size(); i++){
-         // Colores basicos ASCII  (Verde: "Disponible", Rojo: "En ruta", Amarillo: "en reposo")
+         // Colores basicos ASCII  (Verde: "Disponible", Rojo: "Asignado", Amarillo: "En reposo")
          if(padron[i].getEstado()=="Disponible") cout<<"\033[32m";
-         else if(padron[i].getEstado()=="En Ruta") cout<<"\033[31m";
+         else if(padron[i].getEstado()=="Asignado") cout<<"\033[31m";
          else cout<<"\033[33m";
          //Información coloreada
          cout<<left
@@ -467,13 +467,12 @@ void mostrarHistorialServ(vector<Servicio>& historial){
       cout<<"¡¡¡No hay servicios registrados!!!"<<endl;
    }
    else{
-      cout<<left<<setw(5)<<"ID"<<setw(14)<<"COD. UNID."<<setw(12)<<"COD. OP."
-          <<setw(12)<<"N° PAS."<<setw(20)<<"DESTINO"<<setw(20)<<"ESTADO"<<endl;
+      cout<<left<<setw(5)<<"ID"<<setw(14)<<"COD. UNID."<<setw(12)<<"COD. OP."<<setw(12)<<"N° PAS."<<setw(20)<<"DESTINO"<<setw(20)<<"ESTADO"<<endl;
       cout<<fill(75, "-")<<"\n";
       for (size_t i=0; i<historial.size(); i++){
-         // Colores basicos ASCII  (Verde: "Disponible", Rojo: "En ruta", Amarillo: "en reposo")
-         if(historial[i].getEstado()=="Disponible") cout<<"\033[32m";
-         else if(historial[i].getEstado()=="En Ruta") cout<<"\033[31m";
+         // Colores basicos ASCII  (Verde: "Completado", Rojo: "Activo", Amarillo: "Pendiente")
+         if(historial[i].getEstado()=="Completado") cout<<"\033[32m";
+         else if(historial[i].getEstado()=="Activo") cout<<"\033[31m";
          else cout<<"\033[33m";
          //Información coloreada
          cout<<left
@@ -488,57 +487,211 @@ void mostrarHistorialServ(vector<Servicio>& historial){
     pausar();
 }
 
-/*void asignarViaje(vector<Unidad>& flota) {
+void programarNuevoServ(vector<Unidad>& padronUnid, vector<Operador>& padronOp, vector<Servicio>& historial){
    clearScreen();
-   cout<<"=== MODULO DE OPERACIONES: ASIGNACION ==="<<endl<<endl;
-   
-   if (flota.empty()) {
-      cout << "[!] No hay buses disponibles para asignar.\n";
+   int pasajeros{};
+   string destino{};
+   printTitle("PROGRAMAR NUEVO SERVICIO", 1);
+   cin.ignore();
+   cout<<"DESTINO: "; getline(cin, destino);
+   cout<<"N° PASAJEROS: "; cin>>pasajeros;
+
+   //Validar si hay operadores disponibles primero
+   vector<int> indexOp;
+   for (size_t i=0; i<padronOp.size(); i++){
+      if (padronOp[i].getEstado()=="Disponible"){
+         indexOp.push_back((int)i);
+      }
+   }
+   if (indexOp.empty()){
+      cout<<"\n\033[31m[ERROR] No hay operadores DISPONIBLES en este momento. Intente nuevamente mas tarde.\033[0m\n";
       pausar();
-      return;
+      return; // Corta la ejecución de la función aquí
    }
 
-   int demanda;
-   cout << "Ingrese la demanda de pasajeros para este contrato B2B: ";
-   cin >> demanda;
-   
-   cout << "\nBuscando unidades idoneas (Capacidad >=" << demanda << " y Estado = Disponible)...\n";
-   cout << "--------------------------------------------------\n";
-   
-   bool hayOpciones = false;
-   vector<int> indicesValidos; // Para guardar la posicion de los buses aptos
+   //Validar si hay unidades con capacidad suficiente
+   vector<int> indexUnid;
+   for (size_t i=0; i<padronUnid.size(); i++){
+      if (padronUnid[i].getEstado()=="Disponible" && padronUnid[i].getCapacidad()>=pasajeros){
+         indexUnid.push_back((int)i);
+      }
+   }
+   if (indexUnid.empty()){
+      cout<<"\n\033[33m[ALERTA] No hay unidades disponibles con capacidad para "<<pasajeros<<" pasajeros.\033[0m\n";
+      cout<<"Considere fraccionar el servicio asignando en multiples unidades mas pequeñas.\n";
+      pausar();
+      return; 
+   }
 
-   // Regla de Negocio: Validar Capacidad y Disponibilidad
-   for (size_t i = 0; i < flota.size(); i++) {
-      if (flota[i].getCapacidad() >= demanda && flota[i].getEstado() == "Disponible") {
-         cout << "[" << i << "] Placa: " << flota[i].getPlaca() << " | Asientos: " << flota[i].getCapacidad() << endl;
-         indicesValidos.push_back(i);
-         hayOpciones = true;
-      }
+   //Mostrar y seleccionar Unidad
+   cout<<"\n=== UNIDADES DISPONIBLES ===\n";
+   cout<<left<<setw(10)<<"CODIGO"<<setw(15)<<"PLACA"<<setw(15)<<"CAPACIDAD"<<endl;
+   cout<<fill(40, "-")<<"\n";
+   for (size_t i=0; i<indexUnid.size(); i++){
+      cout<<left<<setw(10)<<padronUnid[indexUnid[i]].getCodigo()
+                <<setw(15)<<padronUnid[indexUnid[i]].getPlaca()
+                <<setw(15)<<padronUnid[indexUnid[i]].getCapacidad()<<endl;
    }
-   
-   if (!hayOpciones) {
-      cout << "\n[!] No se encontro ningun bus que cumpla las reglas de negocio.\n";
-   } else {
-      int seleccion;
-      cout << "\nSeleccione el indice del bus a despachar: ";
-      cin >> seleccion;
-      
-      // Validar que el indice seleccionado exista en nuestras opciones validas
-      bool seleccionCorrecta = false;
-      for(size_t i=0; i < indicesValidos.size(); i++){
-         if(seleccion == indicesValidos[i]) seleccionCorrecta = true;
+   int codUnidE{}, indexUnidE=-1;
+   bool validUnid=false;
+   do {
+      cout<<"\nCODIGO de la UNIDAD por asignar: "; cin>>codUnidE;
+      for (size_t i=0; i<indexUnid.size(); i++){
+         if (padronUnid[indexUnid[i]].getCodigo()==codUnidE){
+            indexUnidE=indexUnid[i];
+            validUnid=true;
+            break;
+         }
       }
-      
-      if (seleccionCorrecta) {
-         flota[seleccion].setEstado("En Ruta");
-         cout << "\n[OK] Viaje asignado. El bus " << flota[seleccion].getPlaca() << " esta ahora en ruta.\n";
-      } else {
-         cout << "\n[ERROR] Indice invalido o bus no apto.\n";
-      }
+      if (!validUnid) cout<<"\033[31m[!] Codigo invalido o unidad no apta. Intente de nuevo.\033[0m\n";
+   } while (!validUnid);
+
+   //Mostrar y seleccionar Operador
+   cout<<"\n=== OPERADORES DISPONIBLES ===\n";
+   cout<<left<<setw(10)<<"CODIGO"<<setw(12)<<"DNI"<<setw(40)<<"NOMBRE COMPLETO"<<endl;
+   cout<<fill(62, "-")<<"\n";
+   for (size_t i=0; i<indexOp.size(); i++){
+      cout<<left<<setw(10)<<padronOp[indexOp[i]].getCodigo()
+                <<setw(12)<<padronOp[indexOp[i]].getDNI()
+                <<setw(40)<<padronOp[indexOp[i]].getNombreCompleto()<<endl;
    }
+   int codOpE{}, indexOpE=-1;
+   bool validOp=false;
+   do {
+      cout<<"\nCODIGO del OPERADOR por asignar: "; cin>>codOpE;
+      for (size_t i=0; i<indexOp.size(); i++) {
+         if (padronOp[indexOp[i]].getCodigo()==codOpE) {
+            indexOpE=indexOp[i];
+            validOp=true;
+            break;
+         }
+      }
+      if (!validOp) cout<<"\033[31m[!] Codigo invalido u operador no disponible. Intente de nuevo.\033[0m\n";
+   } while (!validOp);
+
+   //Creación del servicio y actualización de estados
+   int id=historial.size()+1; 
+   historial.push_back(Servicio(id, codUnidE, codOpE, pasajeros, destino, "Pendiente"));
+   padronUnid[indexUnidE].setEstado("Asignado");
+   padronOp[indexOpE].setEstado("Asignado");
+   cout<<"\n\033[32m[EXITO] Servicio "<<id<<" programado correctamente.\033[0m\n";
+   cout<<"Unidad asignada: " <<codUnidE<< " | Operador asignado: "<<codOpE<<endl;
    pausar();
-}*/
+}
+
+void procesarSalida(vector<Unidad>& padronUnid, vector<Operador>& padronOp, vector<Servicio>& historial){
+   clearScreen();
+   printTitle("PROCESAR SALIDA DE SERVICIO", 1);
+
+   //Servicios pendientes
+   vector<int> indexPend;
+   for (size_t i=0; i<historial.size(); i++){
+      if (historial[i].getEstado()=="Pendiente"){
+         indexPend.push_back((int)i);
+      }
+   }
+   if (indexPend.empty()){
+      cout<<"\n\033[33m[ALERTA] No hay servicios PENDIENTES por procesar en este momento.\033[0m\n";
+      pausar();
+      return; 
+   }
+
+   //Mostrar lista de servicios pendientes
+   cout<<"\n=== SERVICIOS PENDIENTES DE SALIDA ===\n";
+   cout<<left<<setw(5)<<"ID"<<setw(14)<<"COD. UNID."<<setw(12)<<"COD. OP."<<setw(12)<<"N° PAS."<<setw(20)<<"DESTINO"<<endl;
+   cout<<fill(55, "-")<<"\n";
+   for (size_t i=0; i<indexPend.size(); i++){
+      cout<<left<<setw(5)<<historial[indexPend[i]].getID()
+                <<setw(12)<<historial[indexPend[i]].getCodigoUnid()
+                <<setw(12)<<historial[indexPend[i]].getCodigoOp()
+                <<setw(12)<<historial[indexPend[i]].getNumPasajeros()
+                <<setw(20)<<historial[indexPend[i]].getDestino()<<endl;
+   }
+
+   //Selección y validación del usuario
+   int idServSalida{}, indexServE=-1;
+   bool validID=false;
+   do {
+      cout<<"\nID del servicio ACTIVO: "; cin>>idServSalida;
+      for (size_t i=0; i<indexPend.size(); i++){
+         if (historial[indexPend[i]].getID()==idServSalida){
+            indexServE=indexPend[i];
+            validID=true;
+            break;
+         }
+      }
+      if (!validID) cout<<"\033[31m[!] ID invalido o no esta en estado PENDIENTE. Intente de nuevo.\033[0m\n";
+   } while (!validID);
+
+   historial[indexServE].setEstado("Activo");
+   cout<<"\n\033[32m[EXITO] El servicio "<<idServSalida<<" ha iniciado su ruta.\033[0m\n";
+   pausar();
+}
+
+void procesarArribo(vector<Unidad>& padronUnid, vector<Operador>& padronOp, vector<Servicio>& historial){
+   clearScreen();
+   printTitle("PROCESAR ARRIBO DE SERVICIO", 1);
+
+   //Servicios activos
+   vector<int> indexActivos;
+   for (size_t i=0; i<historial.size(); i++){
+      if (historial[i].getEstado()=="Activo"){ // Buscamos el estado que definiste en la salida
+         indexActivos.push_back((int)i);
+      }
+   }
+   if (indexActivos.empty()){
+      cout<<"\n\033[33m[ALERTA] No hay servicios ACTIVOS en ruta en este momento.\033[0m\n";
+      pausar();
+      return; 
+   }
+
+   //Mostrar lista de servicios activos
+   cout<<"\n=== SERVICIOS ACTIVOS (EN RUTA) ===\n";
+   cout<<left<<setw(5)<<"ID"<<setw(14)<<"COD. UNID."<<setw(12)<<"COD. OP."<<setw(12)<<"N° PAS."<<setw(20)<<"DESTINO"<<endl;
+   cout<<fill(55, "-")<<"\n";
+   for (size_t i=0; i<indexActivos.size(); i++){
+      cout<<left<<setw(5)<<historial[indexActivos[i]].getID()
+                <<setw(14)<<historial[indexActivos[i]].getCodigoUnid()
+                <<setw(12)<<historial[indexActivos[i]].getCodigoOp()
+                <<setw(12)<<historial[indexActivos[i]].getNumPasajeros()
+                <<setw(20)<<historial[indexActivos[i]].getDestino()<<endl;
+   }
+
+   //Selección y validación del usuario
+   int idServArribo{}, indexServE=-1;
+   bool validID=false;
+   do {
+      cout<<"\nID del servicio COMPLETADO: "; cin>>idServArribo;
+      for (size_t i=0; i<indexActivos.size(); i++){
+         if (historial[indexActivos[i]].getID()==idServArribo){
+            indexServE=indexActivos[i];
+            validID=true;
+            break;
+         }
+      }
+      if (!validID) cout<<"\033[31m[!] ID invalido o no esta en estado ACTIVO. Intente de nuevo.\033[0m\n";
+   } while (!validID);
+
+   historial[indexServE].setEstado("Completado");
+   int codUnidAsig=historial[indexServE].getCodigoUnid();
+   for (size_t i=0; i<padronUnid.size(); i++){
+      if (padronUnid[i].getCodigo()==codUnidAsig){
+         padronUnid[i].setEstado("En reposo");
+         break;
+      }
+   }
+   int codOpAsig=historial[indexServE].getCodigoOp();
+   for (size_t i=0; i<padronOp.size(); i++){
+      if (padronOp[i].getCodigo()==codOpAsig){
+         padronOp[i].setEstado("En reposo");
+         break;
+      }
+   }
+
+   cout<<"\n\033[32m[EXITO] El servicio "<<idServArribo<<" se ha completado.\033[0m\n";
+   cout<<"La Unidad "<<codUnidAsig<<" y el Operador "<<codOpAsig<<" han pasado a estado EN REPOSO.\n";
+   pausar();
+}
    
 void registrarUnidad(vector<Unidad>& padron){
    clearScreen();
