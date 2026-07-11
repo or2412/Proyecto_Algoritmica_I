@@ -7,4 +7,5 @@ C9X-304,103,8,Asignado
 D2F-711,203,45,Disponible
 E8G-922,302,39,En reposo
 F1H-533,204,45,Asignado
-G5J-644,303,39,Disponible
+G5J-644,303,39,En reposo
+OID-129,312,39,Disponible
