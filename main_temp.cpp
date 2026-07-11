@@ -450,7 +450,7 @@ void mostrarPadronUnid(vector<Unidad>& padron){
       cout<<"¡¡¡No hay unidades registradas!!!"<<endl;
    }
    else{
-      cout<<left<<setw(10)<<"PLACA"<<setw(10)<<"CODIGO"<<setw(15)<<"CAPACIDAD"<<setw(11)<<"ESTADO"<<endl;
+      cout<<left<<setw(10)<<"PLACA"<<setw(10)<<"CODIGO"<<setw(12)<<"CAPACIDAD"<<setw(11)<<"ESTADO"<<endl;
       cout<<fill(46, "-")<<"\n";
       for (size_t i=0; i<padron.size(); i++){
          // Colores basicos ASCII  (Verde: "Disponible", Rojo: "Asignado", Amarillo: "En reposo")
@@ -461,7 +461,7 @@ void mostrarPadronUnid(vector<Unidad>& padron){
          cout<<left
          <<setw(10)<<padron[i].getPlaca() 
          <<setw(10)<<padron[i].getCodigo() 
-         <<setw(15)<<padron[i].getCapacidad() 
+         <<setw(12)<<padron[i].getCapacidad() 
          <<setw(11)<<padron[i].getEstado()<<"\033[0m"<<endl;
         }
     }
@@ -475,7 +475,7 @@ void mostrarPadronOp(vector<Operador>& padron){
       cout<<"¡¡¡No hay operadores registrados!!!"<<endl;
    }
    else{
-      cout<<left<<setw(10)<<"CODIGO"<<setw(12)<<"DNI"<<setw(40)<<"NOMBRE COMPLETO"<<setw(20)<<"ESTADO"<<endl;
+      cout<<left<<setw(10)<<"CODIGO"<<setw(12)<<"DNI"<<setw(38)<<"NOMBRE COMPLETO"<<setw(20)<<"ESTADO"<<endl;
       cout<<fill(75, "-")<<"\n";
       for (size_t i=0; i<padron.size(); i++){
          // Colores basicos ASCII  (Verde: "Disponible", Rojo: "Asignado", Amarillo: "En reposo")
@@ -486,7 +486,7 @@ void mostrarPadronOp(vector<Operador>& padron){
          cout<<left
          <<setw(10)<<padron[i].getCodigo() 
          <<setw(12)<<padron[i].getDNI() 
-         <<setw(40)<<padron[i].getNombreCompleto() 
+         <<setw(38)<<padron[i].getNombreCompleto() 
          <<setw(20)<<padron[i].getEstado()<<"\033[0m"<<endl;
         }
     }
@@ -500,8 +500,8 @@ void mostrarHistorialServ(vector<Servicio>& historial){
       cout<<"¡¡¡No hay servicios registrados!!!"<<endl;
    }
    else{
-      cout<<left<<setw(5)<<"ID"<<setw(14)<<"COD. UNID."<<setw(12)<<"COD. OP."<<setw(13)<<"N° PAS."<<setw(20)<<"DESTINO"<<setw(20)<<"ESTADO"<<endl;
-      cout<<fill(75, "-")<<"\n";
+      cout<<left<<setw(5)<<"ID"<<setw(11)<<"COD-UNID"<<setw(9)<<"COD-OP"<<setw(13)<<"N° PAS."<<setw(20)<<"DESTINO"<<setw(18)<<"ESTADO"<<endl;
+      cout<<fill(73, "-")<<"\n";
       for (size_t i=0; i<historial.size(); i++){
          // Colores basicos ASCII  (Verde: "Completado", Rojo: "Activo", Amarillo: "Pendiente")
          if(historial[i].getEstado()=="Completado") cout<<"\033[32m";
@@ -510,11 +510,11 @@ void mostrarHistorialServ(vector<Servicio>& historial){
          //Información coloreada
          cout<<left
          <<setw(5)<<historial[i].getID() 
-         <<setw(14)<<historial[i].getCodigoUnid() 
-         <<setw(12)<<historial[i].getCodigoOp() 
+         <<setw(11)<<historial[i].getCodigoUnid() 
+         <<setw(9)<<historial[i].getCodigoOp() 
          <<setw(12)<<historial[i].getNumPasajeros() 
          <<setw(20)<<historial[i].getDestino() 
-         <<setw(20)<<historial[i].getEstado()<<"\033[0m"<<endl;
+         <<setw(18)<<historial[i].getEstado()<<"\033[0m"<<endl;
         }
     }
     pausar();
@@ -558,7 +558,7 @@ void programarNuevoServ(vector<Unidad>& padronUnid, vector<Operador>& padronOp, 
    //Mostrar y seleccionar Unidad
    cout<<"\n=== UNIDADES DISPONIBLES ===\n\n";
    cout<<left<<setw(10)<<"CODIGO"<<setw(15)<<"PLACA"<<setw(11)<<"CAPACIDAD"<<endl;
-   cout<<fill(40, "-")<<"\n";
+   cout<<fill(36, "-")<<"\n";
    for (size_t i=0; i<indexUnid.size(); i++){
       cout<<left<<setw(10)<<padronUnid[indexUnid[i]].getCodigo()
                 <<setw(15)<<padronUnid[indexUnid[i]].getPlaca()
@@ -629,13 +629,13 @@ void procesarSalida(vector<Servicio>& historial){
    }
 
    //Mostrar lista de servicios pendientes
-   cout<<"\n=== SERVICIOS PENDIENTES DE SALIDA ===\n";
-   cout<<left<<setw(5)<<"ID"<<setw(14)<<"COD. UNID."<<setw(12)<<"COD. OP."<<setw(12)<<"N° PAS."<<setw(20)<<"DESTINO"<<endl;
-   cout<<fill(55, "-")<<"\n";
+   cout<<"\n=== SERVICIOS PENDIENTES DE SALIDA ===\n\n";
+   cout<<left<<setw(5)<<"ID"<<setw(11)<<"COD-UNID"<<setw(9)<<"COD-OP"<<setw(13)<<"N° PAS."<<setw(20)<<"DESTINO"<<endl;
+   cout<<fill(58, "-")<<"\n";
    for (size_t i=0; i<indexPend.size(); i++){
       cout<<left<<setw(5)<<historial[indexPend[i]].getID()
-                <<setw(12)<<historial[indexPend[i]].getCodigoUnid()
-                <<setw(12)<<historial[indexPend[i]].getCodigoOp()
+                <<setw(11)<<historial[indexPend[i]].getCodigoUnid()
+                <<setw(9)<<historial[indexPend[i]].getCodigoOp()
                 <<setw(12)<<historial[indexPend[i]].getNumPasajeros()
                 <<setw(20)<<historial[indexPend[i]].getDestino()<<endl;
    }
@@ -678,13 +678,13 @@ void procesarArribo(vector<Unidad>& padronUnid, vector<Operador>& padronOp, vect
    }
 
    //Mostrar lista de servicios activos
-   cout<<"\n=== SERVICIOS ACTIVOS (EN RUTA) ===\n";
-   cout<<left<<setw(5)<<"ID"<<setw(14)<<"COD. UNID."<<setw(12)<<"COD. OP."<<setw(12)<<"N° PAS."<<setw(20)<<"DESTINO"<<endl;
-   cout<<fill(55, "-")<<"\n";
+   cout<<"\n=== SERVICIOS ACTIVOS (EN RUTA) ===\n\n";
+   cout<<left<<setw(5)<<"ID"<<setw(11)<<"COD-UNID"<<setw(9)<<"COD-OP"<<setw(13)<<"N° PAS."<<setw(20)<<"DESTINO"<<endl;
+   cout<<fill(58, "-")<<"\n";
    for (size_t i=0; i<indexActivos.size(); i++){
       cout<<left<<setw(5)<<historial[indexActivos[i]].getID()
-                <<setw(14)<<historial[indexActivos[i]].getCodigoUnid()
-                <<setw(12)<<historial[indexActivos[i]].getCodigoOp()
+                <<setw(11)<<historial[indexActivos[i]].getCodigoUnid()
+                <<setw(9)<<historial[indexActivos[i]].getCodigoOp()
                 <<setw(12)<<historial[indexActivos[i]].getNumPasajeros()
                 <<setw(20)<<historial[indexActivos[i]].getDestino()<<endl;
    }
