@@ -113,6 +113,27 @@ string llenar(int extension, const string &simbolo){
 	return relleno;
 }
 
+// setw() mide el ancho en BYTES, no en caracteres visibles. Un caracter UTF-8
+// de 2 bytes (como la Ñ/ñ, la unica que normalizarTexto() conserva) ocupa
+// 2 bytes en el string pero se ve como 1 solo caracter en pantalla, y eso
+// descuadra las columnas de las tablas. Esta funcion cuenta cuantos bytes
+// "de mas" aporta ese tipo de caracteres, para sumarlos al ancho pedido en
+// setw() y que el relleno visual salga igual de ancho que si no hubiera Ñ.
+// Ejemplo: "MUÑOZ" ocupa 6 bytes pero se ve como 5 caracteres -> esta funcion
+// devuelve 1, y con setw(10 + 1) el campo deja los mismos 5 espacios visuales
+// que dejaria "PEREZ" con setw(10).
+int compensacionUTF8(const string &texto){
+	int compensacion=0;
+	for (size_t i=0; i<texto.size(); i++){
+		unsigned char c=(unsigned char)texto[i];
+		if (c>=0xC0 && c<=0xDF && i+1<texto.size()){ // inicio de secuencia UTF-8 de 2 bytes
+			compensacion++;
+			i++; // saltar el byte de continuacion, ya contabilizado
+		}
+	}
+	return compensacion;
+}
+
 void titulo(const string &title, int cat){
 	int tamReal{};
 	for (size_t i=0; i<title.size(); i++){
@@ -639,10 +660,12 @@ void mostrarPadronOp(vector<Operador>& padron){
          else if(padron[i].getEstado()=="Asignado") cout<<"\033[31m";
          else cout<<"\033[33m";
          //Información coloreada
+         string nombreCompleto=padron[i].getNombreCompleto();
+         int extraUTF8=compensacionUTF8(nombreCompleto);
          cout<<left
          <<setw(10)<<padron[i].getCodigo() 
          <<setw(12)<<padron[i].getDNI() 
-         <<setw(38)<<padron[i].getNombreCompleto() 
+         <<setw(38+extraUTF8)<<nombreCompleto 
          <<setw(20)<<padron[i].getEstado()<<"\033[0m"<<endl;
       }
    }
@@ -669,12 +692,14 @@ void mostrarHistorialServ(vector<Servicio>& historial){
          else if(historial[i].getEstado()=="Activo") cout<<"\033[31m";
          else cout<<"\033[33m";
          //Información coloreada
+         string destino=historial[i].getDestino();
+         int extraUTF8=compensacionUTF8(destino);
          cout<<left
          <<setw(5)<<historial[i].getID() 
          <<setw(11)<<historial[i].getCodigoUnid() 
          <<setw(9)<<historial[i].getCodigoOp() 
          <<setw(12)<<historial[i].getNumPasajeros() 
-         <<setw(20)<<historial[i].getDestino() 
+         <<setw(20+extraUTF8)<<destino 
          <<setw(18)<<historial[i].getEstado()<<"\033[0m"<<endl;
       }
    }
@@ -763,9 +788,11 @@ void programarNuevoServ(vector<Unidad>& padronUnid, vector<Operador>& padronOp, 
    cout<<"\033[1;36m"<<left<<setw(10)<<"CODIGO"<<setw(12)<<"DNI"<<setw(40)<<"NOMBRE COMPLETO"<<"\033[0m"<<endl;
    cout<<"\033[36m"<<llenar(62, "-")<<"\033[0m\n";
    for (size_t i=0; i<indexOp.size(); i++){
+      string nombreCompleto=padronOp[indexOp[i]].getNombreCompleto();
+      int extraUTF8=compensacionUTF8(nombreCompleto);
       cout<<left<<setw(10)<<padronOp[indexOp[i]].getCodigo()
                 <<setw(12)<<padronOp[indexOp[i]].getDNI()
-                <<setw(40)<<padronOp[indexOp[i]].getNombreCompleto()<<endl;
+                <<setw(40+extraUTF8)<<nombreCompleto<<endl;
    }
    int codOpE{}, indexOpE=-1;
    bool validOp=false;
@@ -820,11 +847,13 @@ void procesarSalida(vector<Servicio>& historial){
    cout<<"\033[1;36m"<<left<<setw(5)<<"ID"<<setw(11)<<"COD-UNID"<<setw(9)<<"COD-OP"<<setw(13)<<"N° PAS."<<setw(20)<<"DESTINO"<<"\033[0m"<<endl;
    cout<<"\033[36m"<<llenar(58, "-")<<"\033[0m\n";
    for (size_t i=0; i<indexPend.size(); i++){
+      string destino=historial[indexPend[i]].getDestino();
+      int extraUTF8=compensacionUTF8(destino);
       cout<<left<<setw(5)<<historial[indexPend[i]].getID()
                 <<setw(11)<<historial[indexPend[i]].getCodigoUnid()
                 <<setw(9)<<historial[indexPend[i]].getCodigoOp()
                 <<setw(12)<<historial[indexPend[i]].getNumPasajeros()
-                <<setw(20)<<historial[indexPend[i]].getDestino()<<endl;
+                <<setw(20+extraUTF8)<<destino<<endl;
    }
 
    //Selección y validación del usuario
@@ -877,11 +906,13 @@ void procesarArribo(vector<Unidad>& padronUnid, vector<Operador>& padronOp, vect
    cout<<"\033[1;36m"<<left<<setw(5)<<"ID"<<setw(11)<<"COD-UNID"<<setw(9)<<"COD-OP"<<setw(13)<<"N° PAS."<<setw(20)<<"DESTINO"<<"\033[0m"<<endl;
    cout<<"\033[36m"<<llenar(58, "-")<<"\033[0m\n";
    for (size_t i=0; i<indexActivos.size(); i++){
+      string destino=historial[indexActivos[i]].getDestino();
+      int extraUTF8=compensacionUTF8(destino);
       cout<<left<<setw(5)<<historial[indexActivos[i]].getID()
                 <<setw(11)<<historial[indexActivos[i]].getCodigoUnid()
                 <<setw(9)<<historial[indexActivos[i]].getCodigoOp()
                 <<setw(12)<<historial[indexActivos[i]].getNumPasajeros()
-                <<setw(20)<<historial[indexActivos[i]].getDestino()<<endl;
+                <<setw(20+extraUTF8)<<destino<<endl;
    }
 
    //Selección y validación del usuario
@@ -926,13 +957,6 @@ void procesarArribo(vector<Unidad>& padronUnid, vector<Operador>& padronOp, vect
    //no añadir nada
    pausar();
 }
-
-// Cantidad minima de turnos (ciclos de menu) que una unidad u operador debe
-// esperar en estado "En reposo" antes de poder volver a "Disponible". Como
-// el programa no tiene reloj real ni corre en segundo plano, el tiempo se
-// simula pidiendole al usuario que confirme cuantos turnos ha esperado, en
-// vez de llevar un contador persistente por cada unidad/operador.
-const int TURNOS_MINIMOS_DESCANSO=2;
 
 void completarDescansoUnidad(vector<Unidad>& padron){
    limpiarPantalla();
@@ -984,25 +1008,6 @@ void completarDescansoUnidad(vector<Unidad>& padron){
       if (!validCod) cout<<"\033[31m[!] Codigo invalido o la unidad no esta en reposo. (Escriba 'C' para cancelar)\033[0m\n";
    } while (!validCod);
 
-   //Confirmar turnos de descanso esperados antes de habilitar el cambio de estado
-   int turnos{};
-   bool cumpleDescanso=false;
-   do {
-      cout<<"\nEsta unidad requiere haber esperado al menos "<<TURNOS_MINIMOS_DESCANSO<<" turno(s) (ciclos de menu) en reposo.\n";
-      if (!leerEntero("¿Cuantos turnos ha esperado en reposo?: ", turnos, 0, 999)){
-         cout<<"\n\033[33m[CANCELADO] Proceso cancelado. No se guardaron cambios.\033[0m\n";
-         //no añadir nada
-         pausar();
-         return;
-      }
-      if (turnos<TURNOS_MINIMOS_DESCANSO){
-         cout<<"\033[31m[!] Aun no cumple el descanso minimo ("<<turnos<<"/"<<TURNOS_MINIMOS_DESCANSO<<" turnos). (Escriba 'C' para cancelar)\033[0m\n";
-      }
-      else{
-         cumpleDescanso=true;
-      }
-   } while (!cumpleDescanso);
-
    padron[indexUnidE].setEstado("Disponible");
    cout<<"\n\033[32m[EXITO] La unidad "<<codUnidE<<" ha completado su descanso y vuelve a estar DISPONIBLE.\033[0m\n";
    //no añadir nada
@@ -1032,9 +1037,11 @@ void completarDescansoOperador(vector<Operador>& padron){
    cout<<"\033[1;36m"<<left<<setw(10)<<"CODIGO"<<setw(12)<<"DNI"<<setw(40)<<"NOMBRE COMPLETO"<<"\033[0m"<<endl;
    cout<<"\033[36m"<<llenar(62, "-")<<"\033[0m\n";
    for (size_t i=0; i<indexReposo.size(); i++){
+      string nombreCompleto=padron[indexReposo[i]].getNombreCompleto();
+      int extraUTF8=compensacionUTF8(nombreCompleto);
       cout<<left<<setw(10)<<padron[indexReposo[i]].getCodigo()
                 <<setw(12)<<padron[indexReposo[i]].getDNI()
-                <<setw(40)<<padron[indexReposo[i]].getNombreCompleto()<<endl;
+                <<setw(40+extraUTF8)<<nombreCompleto<<endl;
    }
 
    //Selección y validación del usuario
@@ -1056,24 +1063,6 @@ void completarDescansoOperador(vector<Operador>& padron){
       }
       if (!validCod) cout<<"\033[31m[!] Codigo invalido o el operador no esta en reposo. (Escriba 'C' para cancelar)\033[0m\n";
    } while (!validCod);
-
-   //Confirmar turnos de descanso esperados antes de habilitar el cambio de estado
-   int turnos{};
-   bool cumpleDescanso=false;
-   do {
-      cout<<"\nEste operador requiere haber esperado al menos "<<TURNOS_MINIMOS_DESCANSO<<" turno(s) (ciclos de menu) en reposo.\n";
-      if (!leerEntero("¿Cuantos turnos ha esperado en reposo?: ", turnos, 0, 999)){
-         cout<<"\n\033[33m[CANCELADO] Proceso cancelado. No se guardaron cambios.\033[0m\n";
-         pausar();
-         return;
-      }
-      if (turnos<TURNOS_MINIMOS_DESCANSO){
-         cout<<"\033[31m[!] Aun no cumple el descanso minimo ("<<turnos<<"/"<<TURNOS_MINIMOS_DESCANSO<<" turnos). (Escriba 'C' para cancelar)\033[0m\n";
-      }
-      else{
-         cumpleDescanso=true;
-      }
-   } while (!cumpleDescanso);
 
    padron[indexOpE].setEstado("Disponible");
    cout<<"\n\033[32m[EXITO] El operador "<<codOpE<<" ha completado su descanso y vuelve a estar DISPONIBLE.\033[0m\n";
