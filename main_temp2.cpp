@@ -6,9 +6,9 @@
 #include <cstdlib>
 #include <fstream>
 #include <sstream>
-#include <algorithm> // Para std::sort (ordenar padrones e historial)
-#include <cctype> // Para isdigit/isalpha (validacion de datos ingresados)
-#include <climits> // Para INT_MIN/INT_MAX (limites por defecto de leerEntero)
+#include <algorithm>
+#include <cctype>
+#include <climits>
 
 using namespace std;
 
@@ -328,12 +328,6 @@ bool esSoloDigitos(const string &texto, size_t desde=0){
    });
 }
 
-// Convierte un texto a mayusculas y le quita las tildes (acentos), para que
-// todo lo que el usuario escribe se guarde de forma uniforme en los archivos.
-// La letra "Ñ"/"ñ" NO se considera una tilde, por lo que se conserva (solo
-// se pasa a mayuscula si vino en minuscula). El atributo Estado nunca pasa
-// por esta funcion, ya que sus valores ("Disponible", "Activo", etc.) son
-// asignados internamente por el programa y no son texto libre del usuario.
 string normalizarTexto(const string &texto){
    string resultado{};
    for (size_t i=0; i<texto.size(); i++){
@@ -357,79 +351,73 @@ string normalizarTexto(const string &texto){
    return resultado;
 }
 
-// Lee texto libre. Devuelve false si el usuario cancela (escribe 'C').
-// Por defecto no permite campos vacios. El texto valido se guarda en
-// mayusculas y sin tildes.
-bool leerTexto(const string &prompt, string &valor, bool permitirVacio=false){
+//garantizar el ingreso de algo o el intento de cancelación
+bool leerTexto(const string &mensaje, string &variableDestino, bool permitirVacio=false){
    string entrada{};
    while (true){
-      cout<<prompt;
+      cout<<mensaje;
       getline(cin, entrada);
       if (esCancelacion(entrada)) return false;
       if (entrada.empty() && !permitirVacio){
-         cout<<"\033[31m[ERROR] Este campo no puede estar vacio. (Escriba 'C' para cancelar)\033[0m\n";
+         cout<<"\033[31m[ERROR] Campo obligatorio. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
          continue;
       }
-      valor=normalizarTexto(entrada);
+      variableDestino=normalizarTexto(entrada);
       return true;
    }
 }
 
-// Lee un entero dentro de un rango opcional [minimo, maximo].
-// Devuelve false si el usuario cancela (escribe 'C').
-bool leerEntero(const string &prompt, int &valor, int minimo=INT_MIN, int maximo=INT_MAX){
+//garantiza un número dentro del rango [minimo, maximo].
+bool leerEntero(const string &mensaje, int &variableDestino, int minimo=INT_MIN, int maximo=INT_MAX){
    string entrada{};
    while (true){
-      cout<<prompt;
+      cout<<mensaje;
       getline(cin, entrada);
       if (esCancelacion(entrada)) return false;
-
-      size_t desdeDigitos=0;
-      if (!entrada.empty() && (entrada[0]=='-' || entrada[0]=='+')) desdeDigitos=1;
-      if (!esSoloDigitos(entrada, desdeDigitos)){
-         cout<<"\033[31m[ERROR] Debe ingresar un numero valido. (Escriba 'C' para cancelar)\033[0m\n";
+      size_t desdeDigito=0;
+      if (!entrada.empty() && (entrada[0]=='-' || entrada[0]=='+')) desdeDigito=1;
+      if (!esSoloDigitos(entrada, desdeDigito)){
+         cout<<"\033[31m[ERROR] Debe ingresar un numero valido. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
          continue;
       }
-
       int numero{};
       try{
          numero=stoi(entrada);
       } catch(...){
-         cout<<"\033[31m[ERROR] El numero ingresado es demasiado grande. (Escriba 'C' para cancelar)\033[0m\n";
+         cout<<"\033[31m[ERROR] El numero ingresado es demasiado grande. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
          continue;
       }
       if (numero<minimo || numero>maximo){
-         cout<<"\033[31m[ERROR] El valor debe estar entre "<<minimo<<" y "<<maximo<<". (Escriba 'C' para cancelar)\033[0m\n";
+         cout<<"\033[31m[ERROR] El valor debe estar entre "<<minimo<<" y "<<maximo<<". (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
          continue;
       }
-      valor=numero;
+      variableDestino=numero;
       return true;
    }
 }
 
-// Lee un DNI/C.E.: solo digitos, entre 8 y 12 caracteres (cubre DNI peruano
-// de 8 digitos y Carnet de Extranjeria, que puede tener mas digitos).
-bool leerDNI(const string &prompt, int &valor){
+//garantiza leer DNI/C.E.: solo digitos, entre 8 (DNI) y 12 (C.E.) caracteres
+bool leerDNI(const string &mensaje, int &variableDestino){
    string entrada{};
    while (true){
-      cout<<prompt;
+      cout<<mensaje;
       getline(cin, entrada);
       if (esCancelacion(entrada)) return false;
       if (!esSoloDigitos(entrada) || entrada.size()<8 || entrada.size()>12){
-         cout<<"\033[31m[ERROR] El DNI/C.E. debe tener entre 8 y 12 digitos numericos. (Escriba 'C' para cancelar)\033[0m\n";
+         cout<<"\033[31m[ERROR] El DNI/C.E. debe tener entre 8 y 12 digitos numericos. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
          continue;
       }
       try{
-         valor=stoi(entrada);
+         variableDestino=stoi(entrada);
       } catch(...){
-         cout<<"\033[31m[ERROR] El DNI/C.E. ingresado no es valido. (Escriba 'C' para cancelar)\033[0m\n";
+         cout<<"\033[31m[ERROR] El DNI/C.E. ingresado no es valido. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
          continue;
       }
       return true;
    }
 }
 
-// Valida el formato de placa esperado: 3 letras + guion + 3 numeros (ej. ABC-123)
+//garantiza el formato de placa específico: 3 letras + guion + 3 numeros (ej. ABC-123)
 bool tieneFormatoPlaca(const string &placa){
    if (placa.size()!=7) return false;
    for (int i=0; i<3; i++) if (!isalpha((unsigned char)placa[i])) return false;
@@ -438,18 +426,18 @@ bool tieneFormatoPlaca(const string &placa){
    return true;
 }
 
-// Lee una placa vehicular validando su formato (ej. ABC-123). Se guarda en mayusculas.
-bool leerPlaca(const string &prompt, string &valor){
+//garantiza que la placa se guarde con el formato correcto (ej. ABC-123)
+bool leerPlaca(const string &mensaje, string &variableDestino){
    string entrada{};
    while (true){
-      cout<<prompt;
+      cout<<mensaje;
       getline(cin, entrada);
       if (esCancelacion(entrada)) return false;
       if (!tieneFormatoPlaca(entrada)){
-         cout<<"\033[31m[ERROR] Formato de placa no valido. Use el formato ABC-123. (Escriba 'C' para cancelar)\033[0m\n";
+         cout<<"\033[31m[ERROR] Formato de placa no valido. Use el formato ABC-123. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
          continue;
       }
-      valor=normalizarTexto(entrada);
+      variableDestino=normalizarTexto(entrada);
       return true;
    }
 }
@@ -699,16 +687,15 @@ void programarNuevoServ(vector<Unidad>& padronUnid, vector<Operador>& padronOp, 
    int pasajeros{};
    string destino{};
    titulo("PROGRAMAR NUEVO SERVICIO", 2);
-   cout<<"\033[33m(Puede escribir 'C' en cualquier momento para cancelar la programacion)\033[0m\n\n";
+   cout<<"\033[33m(Puede escribir 'Q' en cualquier momento para cancelar la programación)\033[0m\n\n";
 
    if (!leerTexto("DESTINO: ", destino)){
-      cout<<"\n\033[33m[CANCELADO] Programacion de servicio cancelada. No se guardaron cambios.\033[0m\n";
-      //no añadir nada
+      cout<<"\n\033[33m[CANCELADO] Programación de servicio cancelada. No se guardaron cambios.\033[0m\n";
       pausar();
       return;
    }
    if (!leerEntero("N° PASAJEROS: ", pasajeros, 1, 999)){
-      cout<<"\n\033[33m[CANCELADO] Programacion de servicio cancelada. No se guardaron cambios.\033[0m\n";
+      cout<<"\n\033[33m[CANCELADO] Programación de servicio cancelada. No se guardaron cambios.\033[0m\n";
       //no añadir nada
       pausar();
       return;
