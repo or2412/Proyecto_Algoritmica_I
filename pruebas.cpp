@@ -80,7 +80,7 @@ int main()
             cout<<"\033[95m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
             cout<<"\033[96m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
             cout<<"\033[97m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
-            title("TEXTO DIM", 3);
+            title("TEXTO OPACO", 3);
             cout<<"\033[2;30m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
             cout<<"\033[2;31m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
             cout<<"\033[2;32m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
@@ -89,6 +89,15 @@ int main()
             cout<<"\033[2;35m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
             cout<<"\033[2;36m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
             cout<<"\033[2;37m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            title("TEXTO BRILLANTE OPACO", 3); //si es posible jejeje
+            cout<<"\033[2;90m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;91m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;92m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;93m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;94m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;95m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;96m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;97m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
             title("TEXTO CURSIVA", 3);
             cout<<"\033[3;30m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
             cout<<"\033[3;31m"<<"TEXTO de PrUeBa"<<"\033[0m\n";

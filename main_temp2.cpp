@@ -262,46 +262,55 @@ void puntosCarga(int repeticion, unsigned int retraso){
 
 void menuPrincipal(){
    limpiarPantalla();
-   titulo("SISTEMA DE GESTION DE TRANSPORTE", 0);
-   cout<<"\033[96m"<<"  ├╴["<<"\033[0m"<<"1"<<"\033[96m"<<"] "<<"\033[0m"<<"Mostrar Padron General\n";
-   cout<<"\033[96m"<<"  ├╴["<<"\033[0m"<<"2"<<"\033[96m"<<"] "<<"\033[0m"<<"Mostrar Historial de Servicios\n";
-   cout<<"\033[96m"<<"  ├╴["<<"\033[0m"<<"3"<<"\033[96m"<<"] "<<"\033[0m"<<"Modulo de Operaciones (Programar/Despachar)\n";
-   cout<<"\033[96m"<<"  ├╴["<<"\033[0m"<<"4"<<"\033[96m"<<"] "<<"\033[0m"<<"Modulo de Registros (Unidades/Operadores)\n";
-   cout<<"\033[96m"<<"  └╴["<<"\033[0m"<<"0"<<"\033[96m"<<"] "<<"\033[0m"<<"Salir y Guardar\n";
-   cout<<"\n\033[96m►► \033[0m"<<"Ingresar opcion "<<"\033[96m-→ \033[0m";
+   titulo("SISTEMA DE GESTIÓN DE TRANSPORTE", 0);
+   cout<<"\033[96m"<<"  ├╴["<<"\033[0m"<<"1"<<"\033[96m"<<"] "<<"\033[0m"<<"PADRÓN GENERAL\n";
+   cout<<"\033[96m"<<"  ├╴["<<"\033[0m"<<"2"<<"\033[96m"<<"] "<<"\033[0m"<<"HISTORIAL DE SERVICIOS\n";
+   cout<<"\033[96m"<<"  ├╴["<<"\033[0m"<<"3"<<"\033[96m"<<"] "<<"\033[0m"<<"OPERACIONES\n";
+   cout<<"\033[96m"<<"  ├╴["<<"\033[0m"<<"4"<<"\033[96m"<<"] "<<"\033[0m"<<"NUEVOS REGISTROS\n";
+   cout<<"\033[96m"<<"  └╴["<<"\033[0m"<<"0"<<"\033[96m"<<"] "<<"\033[0m"<<"GUARDAR Y SALIR\n";
+   cout<<"\n\033[96m►► \033[0m"<<"Ingresar opción "<<"\033[96m-→ \033[0m";
 }
 
 void menuPadron(){
    limpiarPantalla();
-   titulo("PADRON GENERAL", 1);
-   cout<<"  ├╴[1] Ver Padron de Unidades\n";
-   cout<<"  ├╴[2] Ver Padron de Operadores\n";
-   cout<<"  └╴[0] Regresar al menu principal\n";
-   cout<<"\n►► Ingresar opcion -→ ";
+   titulo("PADRÓN GENERAL", 1);
+   cout<<"  ├╴[1] PADRÓN DE UNIDADES\n";
+   cout<<"  ├╴[2] PADRÓN DE OPERADORES\n";
+   cout<<"  └╴[0] REGRESAR AL MENÚ PRINCIPAL\n";
+   cout<<"\n►► Ingresar opción -→ ";
 }
 
 void menuOperaciones(){
    limpiarPantalla();
-   titulo("MODULO DE OPERACIONES", 1);
-   cout<<"  ├╴[1] Programar nuevo servicio\n";
-   cout<<"  ├╴[2] Procesar salida de bus (En Ruta)\n";
-   cout<<"  ├╴[3] Procesar arribo de bus (Completado)\n";
-   cout<<"  ├╴[4] Completar descanso (Unidad/Operador)\n";
-   cout<<"  └╴[0] Regresar al menu principal\n";
-   cout<<"\n►► Ingresar opcion -→ ";
+   titulo("MÓDULO DE OPERACIONES", 1);
+   cout<<"  ├╴[1] PROGRAMAR NUEVO SERVICIO\n";
+   cout<<"  ├╴[2] PROCESAR SALIDA DE UNIDAD\n";
+   cout<<"  ├╴[3] PROCESAR ARRIBO DE UNIDAD\n";
+   cout<<"  ├╴[4] MARCAR FIN DE DESCANSO\n";
+   cout<<"  └╴[0] REGRESAR AL MENÚ PRINCIPAL\n";
+   cout<<"\n►► Ingresar opción -→ ";
 }
 
 void menuRegistros(){
    limpiarPantalla();
-   titulo("MODULO DE REGISTROS", 1);
-   cout<<"  ├╴[1] Registrar nueva Unidad\n";
-   cout<<"  ├╴[2] Registrar nuevo Operador\n";
-   cout<<"  └╴[0] Regresar al menu principal\n";
-   cout<<"\n►► Ingresar opcion -→ ";
+   titulo("MÓDULO DE REGISTROS", 1);
+   cout<<"  ├╴[1] REGISTRAR NUEVA UNIDAD\n";
+   cout<<"  ├╴[2] REGISTRAR NUEVO OPERADOR\n";
+   cout<<"  └╴[0] REGRESAR AL MENÚ PRINCIPAL\n";
+   cout<<"\n►► Ingresar opción -→ ";
+}
+
+void menuFinDescansos(){
+   limpiarPantalla();
+   titulo("FIN DE DESCANSO", 2);
+   cout<<"  ├╴[1] UNIDAD\n";
+   cout<<"  ├╴[2] OPERADOR\n";
+   cout<<"  └╴[0] REGRESAR AL MENÚ DE OPERACIONES\n";
+   cout<<"\n►► Ingresar opción -→ ";
 }
 
 void pausar(){
-   cout<<"\nPresione ENTER para continuar...";
+   cout<<"\n\033[2;37mPresione ENTER para continuar...\033[0m";
    //cin.ignore();
    cin.get();
 }
@@ -1015,7 +1024,7 @@ void completarDescansoUnidad(vector<Unidad>& padron){
 
 void completarDescansoOperador(vector<Operador>& padron){
    limpiarPantalla();
-   titulo("COMPLETAR DESCANSO DE OPERADOR", 2);
+   titulo("COMPLETAR DESCANSO DE OPERADOR", 3);
    cout<<endl;
 
    //Operadores en reposo
@@ -1032,7 +1041,7 @@ void completarDescansoOperador(vector<Operador>& padron){
    }
 
    //Mostrar lista de operadores en reposo
-   titulo("OPERADORES EN REPOSO", 3); cout<<endl;
+   titulo("OPERADORES EN REPOSO", 4); cout<<endl;
    cout<<"\033[1;36m"<<left<<setw(10)<<"CODIGO"<<setw(12)<<"DNI"<<setw(40)<<"NOMBRE COMPLETO"<<"\033[0m"<<endl;
    cout<<"\033[36m"<<llenar(62, "-")<<"\033[0m\n";
    for (size_t i=0; i<indexReposo.size(); i++){
@@ -1090,12 +1099,7 @@ void completarDescanso(vector<Unidad>& padronUnid, vector<Operador>& padronOp){
    string teclado{};
    char opc{};
    do {
-      limpiarPantalla();
-      titulo("COMPLETAR DESCANSO", 1);
-      cout<<"  ├╴[1] Unidad en reposo\n";
-      cout<<"  ├╴[2] Operador en reposo\n";
-      cout<<"  └╴[0] Cancelar\n";
-      cout<<"\n►► Ingresar opcion -→ ";
+      menuFinDescansos();
       getline(cin, teclado);
       opc='X';
       if (teclado.size()==1) opc=teclado[0];
