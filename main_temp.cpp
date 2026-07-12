@@ -357,13 +357,13 @@ string normalizarTexto(const string &texto){
       if (c==0xC3 && i+1<texto.size()){
          unsigned char c2=(unsigned char)texto[i+1];
          switch (c2){
-            case 0x81: case 0xA1: resultado+='A'; i++; continue; // Á á -> A
-            case 0x89: case 0xA9: resultado+='E'; i++; continue; // É é -> E
-            case 0x8D: case 0xAD: resultado+='I'; i++; continue; // Í í -> I
-            case 0x93: case 0xB3: resultado+='O'; i++; continue; // Ó ó -> O
-            case 0x9A: case 0xBA: resultado+='U'; i++; continue; // Ú ú -> U
-            case 0x9C: case 0xBC: resultado+='U'; i++; continue; // Ü ü -> U
-            case 0x91: case 0xB1: resultado+="\xC3\x91"; i++; continue; // Ñ/ñ -> Ñ (se conserva)
+            case 0x81: case 0xA1: resultado+='\xC3\x81'; i++; continue; // Á á -> Á
+            case 0x89: case 0xA9: resultado+='\xC3\x89'; i++; continue; // É é -> É
+            case 0x8D: case 0xAD: resultado+='\xC3\x8D'; i++; continue; // Í í -> Í
+            case 0x93: case 0xB3: resultado+='\xC3\x93'; i++; continue; // Ó ó -> Ó
+            case 0x9A: case 0xBA: resultado+='\xC3\x9A'; i++; continue; // Ú ú -> Ú
+            case 0x9C: case 0xBC: resultado+='\xC3\x9C'; i++; continue; // Ü ü -> Ü
+            case 0x91: case 0xB1: resultado+="\xC3\x91"; i++; continue; // Ñ/ñ -> Ñ
             default: break; // Otro caracter UTF-8 no contemplado: se deja tal cual
          }
       }
