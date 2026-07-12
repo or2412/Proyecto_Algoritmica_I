@@ -13,7 +13,7 @@ using namespace std;
 //declaración de funciones
 void menu();
 string fill(int, const string &);
-void printTitle(const string &, int);
+void title(const string &, int);
 void loadingDots(int repeat, unsigned int delay){
    for(int i=1; i<=repeat; i++){
       for (int j=1; j<=3; j++){
@@ -52,15 +52,91 @@ int main()
 			}
 			case '2':{
 				//operacion 2
-            printTitle("HOLA", 0);
-            printTitle("MI PRIMER TÍTULO", 1);
-            printTitle("ALGORITMOS Y ESTRUCTURAS DE DATOS", 2);
-            printTitle("PROGRAMACIÓN EN C++ DESDE CERO", 3);
-            printTitle("ESTE ES UN TÍTULO UN POCO MÁS LARGO PARA PROBAR", 4);
+            title("HOLA", 0);
+            title("MI PRIMER TÍTULO", 1);
+            title("ALGORITMOS Y ESTRUCTURAS DE DATOS", 2);
+            title("PROGRAMACIÓN EN C++ DESDE CERO", 3);
+            title("ESTE ES UN TÍTULO UN POCO MÁS LARGO PARA PROBAR", 4);
 				break;
 			}
 			case '3':{
 				//operacion 3
+            string texto{};
+            title("TEXTO NORMAL", 3);
+            cout<<"\033[0;30m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[0;31m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[0;32m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[0;33m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[0;34m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[0;35m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[0;36m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[0;37m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            title("TEXTO BRILLANTE", 3);
+            cout<<"\033[90m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[91m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[92m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[93m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[94m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[95m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[96m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[97m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            title("TEXTO DIM", 3);
+            cout<<"\033[2;30m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;31m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;32m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;33m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;34m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;35m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;36m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;37m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            title("TEXTO CURSIVA", 3);
+            cout<<"\033[3;30m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[3;31m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[3;32m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[3;33m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[3;34m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[3;35m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[3;36m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[3;37m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            title("TEXTO SUBRAYADO", 3);
+            cout<<"\033[4;30m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[4;31m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[4;32m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[4;33m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[4;34m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[4;35m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[4;36m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[4;37m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            title("TEXTO CON FONDO DE COLOR", 3);
+            cout<<"\033[37;40m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[37;41m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[37;42m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[37;43m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[37;44m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[37;45m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[37;46m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[30;47m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            title("TEXTO CON FONDO DE COLOR BRILLANTE", 3);
+            cout<<"\033[2;30;100m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;30;101m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;30;102m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;30;103m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;30;104m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;30;105m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;30;106m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            cout<<"\033[2;30;107m"<<"TEXTO de PrUeBa"<<"\033[0m\n";
+            title("MENSAJES DE TEXTO CLÁSICO", 3);
+            cout<<"\033[31m"<<"ALERTA"<<"\033[0m\n";
+            cout<<"\033[30;41m"<<"ALERTA CRÍTICA"<<"\033[0m\n";
+            cout<<"\033[32m"<<"CONFIRMACIÓN"<<"\033[0m\n";
+            cout<<"\033[30;42m"<<"CONFIRMACIÓN ALTERNATIVA"<<"\033[0m\n";
+            cout<<"\033[33m"<<"ADVERTENCIA"<<"\033[0m\n";
+            cout<<"\033[30;43m"<<"ADVERTENCIA ALTERNATIVA"<<"\033[0m\n";
+            cout<<"\033[4;34m"<<"INFORMACIÓN / LINK"<<"\033[0m\n";
+            cout<<"\033[7m"<<"INVERSION CLÁSICA"<<"\033[0m\n";
+            cout<<"\033[97;44m"<<"SELECCIÓN"<<"\033[0m\n";
+            cout<<"ESCRIBE ALGO: \033[7m"; getline(cin, texto);
+            cout<<"\033[0m";
 				break;
 			}
 			case '0':{
@@ -88,7 +164,7 @@ int main()
 //Función menú
 void menu(){
 	system("cls");
-	printTitle("MENU DE OPCIONES", 0);
+	title("MENU DE OPCIONES", 0);
 	cout<<"├╴[1] Ejercicio 1"<<endl;
 	cout<<"├╴[2] Ejercicio 2"<<endl;
 	cout<<"├╴[3] Ejercicio 3"<<endl;
@@ -104,7 +180,7 @@ string fill(int lenght, const string &symbol){
 }
 
 //Función de titulos
-void printTitle(const string &title, int cat){
+void title(const string &title, int cat){
 	int tamReal{};
 	for (size_t i=0; i<title.size(); i++){
 		unsigned char c=(unsigned char)(title[i]);
