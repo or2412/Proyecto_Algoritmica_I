@@ -148,6 +148,51 @@ int main()
             cout<<"\033[0m";
 				break;
 			}
+         case '4':{
+            // --- CAT 0: Título Principal del Programa (Hero Header) ---
+            // Fondo azul fuerte, letras blancas brillantes, con un bloque de acento.
+            cout << "\n\033[44;1;97m  ██  SISTEMA DE GESTIÓN DE BUSES V2.0  ██  \033[0m\n\n";
+
+            // --- CAT 1: Título de Módulo / Sección ---
+            // El estilo "Badge" (escarapela) que te gustó antes.
+            cout << "\n\033[1;36m ▌ \033[30;46m PROGRAMAR NUEVO SERVICIO \033[0m\n\n";
+
+            // --- CAT 2: Título de Formulario / Sub-sección ---
+            // Un bloque lateral elegante, texto en blanco brillante y una sutil línea gris de base.
+            cout << "\n\033[1;34m ▍ \033[1;97mDatos del Operador\033[0m\n";
+            cout << "\033[90m └──────────────────────────────────────\033[0m\n";
+
+            // --- CAT 3: Separador de bloque ---
+            // Se acabaron los "====". Usamos una línea continua muy tenue y el texto coloreado.
+            cout << "\n\033[90m ────── \033[1;35mResumen de Ruta\033[90m ────── \033[0m\n\n";
+
+            // --- CAT 4: Título de Lista / Tabla ---
+            // Super minimalista, gris tenue, usa una viñeta moderna de flecha.
+            cout << "\n\033[1;90m › Servicios Pendientes \033[0m\n\n";
+
+            // --- CAT 0: Título Principal del Programa (Hero Header) ---
+            // Dos líneas gruesas enmarcando el texto, sin cerrar los lados para que respire.
+            cout << "\n\033[38;5;63m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m\n";
+            cout << "\033[1;97m               MENU PRINCIPAL               \033[0m\n";
+            cout << "\033[38;5;63m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m\n\n";
+
+            // --- CAT 1: Título de Módulo / Sección ---
+            // Un borde superior flotante con esquinas redondeadas.
+            cout << "\n\033[36m╭───────── \033[1;97mMODULO DE RUTAS\033[36m ─────────╮\033[0m\n\n";
+
+            // --- CAT 2: Título de Formulario / Sub-sección ---
+            // Una flecha de continuidad que nace del borde izquierdo.
+            cout << "\n\033[34m ╰─► \033[1;97mDetalles del Pasajero\033[0m\n";
+
+            // --- CAT 3: Separador de bloque ---
+            // Un rombo como viñeta central.
+            cout << "\n\033[35m ◈ \033[1;97mInformación Adicional\033[0m\n\n";
+
+            // --- CAT 4: Título de Lista / Tabla ---
+            // Línea punteada sutil.
+            cout << "\n\033[90m ┄┄ \033[37mHistorial de Viajes\033[90m ┄┄\033[0m\n";
+            break;
+         }
 			case '0':{
 				//salida del programa
 				cout<<"\nSaliendo del programa...";
@@ -177,6 +222,7 @@ void menu(){
 	cout<<"├╴[1] Ejercicio 1"<<endl;
 	cout<<"├╴[2] Ejercicio 2"<<endl;
 	cout<<"├╴[3] Ejercicio 3"<<endl;
+   cout<<"├╴[4] Ejercicio 4"<<endl;
 	cout<<"└╴[0] Salir"<<endl;
 	cout<<"\n►►Ingresar opcion -→ ";	
 }

@@ -2,6 +2,7 @@
 *.exe
 *.out
 *.app
+*.rar
 
 # === ARCHIVOS TEMPORALES DE COMPILACIÓN (MSVC/GCC) ===
 *.obj
