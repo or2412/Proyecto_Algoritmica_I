@@ -371,8 +371,9 @@ void menuCamposOp(Operador &op){
 
 void menuCamposServ(Servicio &serv){
    titulo("CAMPO A MODIFICAR", 3);
-   cout<<"├╴[1] UNIDAD Y OPERADOR ASIGNADO (actual: UNIDAD "<<serv.getCodigoUnid()<<" / OPERADOR "<<serv.getCodigoOp()<<")\n";
-   cout<<"├╴[2] DESTINO                    (actual: "<<serv.getDestino()<<")\n";
+   cout<<"├╴[1] UNIDAD ASIGNADA     (actual: UNIDAD "<<serv.getCodigoUnid()<<")\n";
+   cout<<"├╴[2] OPERADOR ASIGNADO   (actual: OPERADOR "<<serv.getCodigoOp()<<")\n";
+   cout<<"├╴[3] DESTINO             (actual: "<<serv.getDestino()<<")\n";
    cout<<"└╴[0] REGRESAR AL MENÚ DE MODIFICAR DATOS\n";
    cout<<"\n►► Ingresar opción -→ ";
 }
@@ -1543,43 +1544,67 @@ void modificarDestinoServ(Servicio &serv){
 // mismos selectores de programarNuevoServ()) para elegir los nuevos, y solo
 // libera la asignacion anterior si el usuario confirma ambas elecciones; si
 // cancela en cualquier punto, la asignacion original queda intacta.
-void modificarAsignacionServ(vector<Unidad>& padronUnid, vector<Operador>& padronOp, Servicio &serv){
+// Permite modificar SOLO la unidad asignada al servicio
+void modificarUnidadServ(vector<Unidad>& padronUnid, Servicio &serv){
    limpiarPantalla();
-   titulo("CAMBIAR UNIDAD Y OPERADOR ASIGNADO", 3);
-   cout<<"\nActualmente asignados -> UNIDAD: "<<serv.getCodigoUnid()<<" | OPERADOR: "<<serv.getCodigoOp()<<"\n";
-   cout<<"\033[33m(Puede escribir 'Q' o 'CANCELAR' en cualquier momento para cancelar el reemplazo; si cancela, se conserva la asignacion actual)\033[0m\n";
+   titulo("CAMBIAR UNIDAD ASIGNADA", 3);
+   cout<<"\nActualmente asignada -> UNIDAD: "<<serv.getCodigoUnid()<<"\n";
+   cout<<"\033[33m(Puede escribir 'Q' o 'CANCELAR' en cualquier momento para cancelar el reemplazo)\033[0m\n";
 
-   int indexNuevaUnid=seleccionarUnidDisponible(padronUnid, serv.getNumPasajeros());
-   if (indexNuevaUnid==-1){
-      cout<<"\n\033[33m[CANCELADO] Se conserva la asignacion actual.\033[0m\n";
+   // 1. Elegir nueva unidad (respetando la capacidad de pasajeros del servicio)
+   int indexNuevaUnid = seleccionarUnidDisponible(padronUnid, serv.getNumPasajeros());
+   if (indexNuevaUnid == -1){
+      cout<<"\n\033[33m[CANCELADO] Se conserva la unidad actual.\033[0m\n";
       pausar();
       return;
    }
 
-   int indexNuevoOp=seleccionarOpDisponible(padronOp);
-   if (indexNuevoOp==-1){
-      cout<<"\n\033[33m[CANCELADO] Se conserva la asignacion actual.\033[0m\n";
-      pausar();
-      return;
+   // 2. Liberar la unidad anterior
+   int codUnidAnterior = serv.getCodigoUnid();
+   for (size_t i = 0; i < padronUnid.size(); i++){
+      if (padronUnid[i].getCodigo() == codUnidAnterior) {
+         padronUnid[i].setEstado("Disponible");
+         break; // Optimización: ya lo encontramos, salimos del bucle
+      }
    }
 
-   //Ambas elecciones confirmadas: se libera la unidad/operador anterior y se
-   //confirma la nueva asignacion.
-   int codUnidAnterior=serv.getCodigoUnid();
-   int codOpAnterior=serv.getCodigoOp();
-   for (size_t i=0; i<padronUnid.size(); i++){
-      if (padronUnid[i].getCodigo()==codUnidAnterior) padronUnid[i].setEstado("Disponible");
-   }
-   for (size_t i=0; i<padronOp.size(); i++){
-      if (padronOp[i].getCodigo()==codOpAnterior) padronOp[i].setEstado("Disponible");
-   }
+   // 3. Ocupar la nueva unidad y actualizar el servicio
    padronUnid[indexNuevaUnid].setEstado("Asignado");
-   padronOp[indexNuevoOp].setEstado("Asignado");
    serv.setCodigoUnid(padronUnid[indexNuevaUnid].getCodigo());
+
+   cout<<"\n\033[32m[EXITO] Unidad actualizada -→ "<<codUnidAnterior<<" -→ "<<serv.getCodigoUnid()<<"\033[0m\n";
+   pausar();
+}
+
+// Permite modificar SOLO el operador asignado al servicio
+void modificarOperadorServ(vector<Operador>& padronOp, Servicio &serv){
+   limpiarPantalla();
+   titulo("CAMBIAR OPERADOR ASIGNADO", 3);
+   cout<<"\nActualmente asignado -> OPERADOR: "<<serv.getCodigoOp()<<"\n";
+   cout<<"\033[33m(Puede escribir 'Q' o 'CANCELAR' en cualquier momento para cancelar el reemplazo)\033[0m\n";
+
+   // 1. Elegir nuevo operador
+   int indexNuevoOp = seleccionarOpDisponible(padronOp);
+   if (indexNuevoOp == -1){
+      cout<<"\n\033[33m[CANCELADO] Se conserva el operador actual.\033[0m\n";
+      pausar();
+      return;
+   }
+
+   // 2. Liberar el operador anterior
+   int codOpAnterior = serv.getCodigoOp();
+   for (size_t i = 0; i < padronOp.size(); i++){
+      if (padronOp[i].getCodigo() == codOpAnterior) {
+         padronOp[i].setEstado("Disponible");
+         break; // Optimización
+      }
+   }
+
+   // 3. Ocupar el nuevo operador y actualizar el servicio
+   padronOp[indexNuevoOp].setEstado("Asignado");
    serv.setCodigoOp(padronOp[indexNuevoOp].getCodigo());
 
-   cout<<"\n\033[32m[EXITO] Asignacion actualizada -→ UNIDAD: "<<codUnidAnterior<<" -→ "<<serv.getCodigoUnid()
-       <<" | OPERADOR: "<<codOpAnterior<<" -→ "<<serv.getCodigoOp()<<"\033[0m\n";
+   cout<<"\n\033[32m[EXITO] Operador actualizado -→ "<<codOpAnterior<<" -→ "<<serv.getCodigoOp()<<"\033[0m\n";
    pausar();
 }
 
@@ -1647,9 +1672,10 @@ void modificarServicio(vector<Unidad>& padronUnid, vector<Operador>& padronOp, v
       if (teclado.size()==1) opc=teclado[0];
 
       switch(opc){
-         case '1': modificarAsignacionServ(padronUnid, padronOp, historial[indexServE]); break;
-         case '2': modificarDestinoServ(historial[indexServE]); break;
-         case '0': break; // Regresa al menu de Modificar Datos
+         case '1': modificarUnidadServ(padronUnid, historial[indexServE]); break;
+         case '2': modificarOperadorServ(padronOp, historial[indexServE]); break;
+         case '3': modificarDestinoServ(historial[indexServE]); break;
+         case '0': break; // Regresa al menu principal
          default:
             cout<<"\n\033[31m[ERROR] Opcion no valida.\033[0m\n";
             pausar();
