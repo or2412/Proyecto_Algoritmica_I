@@ -284,98 +284,98 @@ void puntosCarga(int repeticion, unsigned int retraso){
 void menuPrincipal(){
    limpiarPantalla();
    titulo("SISTEMA DE GESTIÓN DE TRANSPORTE", 0);
-   cout<<"\033[96m"<<"  ├╴["<<"\033[0m"<<"1"<<"\033[96m"<<"] "<<"\033[0m"<<"PADRÓN GENERAL\n";
-   cout<<"\033[96m"<<"  ├╴["<<"\033[0m"<<"2"<<"\033[96m"<<"] "<<"\033[0m"<<"HISTORIAL DE SERVICIOS\n";
-   cout<<"\033[96m"<<"  ├╴["<<"\033[0m"<<"3"<<"\033[96m"<<"] "<<"\033[0m"<<"OPERACIONES\n";
-   cout<<"\033[96m"<<"  ├╴["<<"\033[0m"<<"4"<<"\033[96m"<<"] "<<"\033[0m"<<"NUEVOS REGISTROS\n";
-   cout<<"\033[96m"<<"  └╴["<<"\033[0m"<<"0"<<"\033[96m"<<"] "<<"\033[0m"<<"GUARDAR Y SALIR\n";
+   cout<<"\033[96m  ├╴["<<"\033[0m"<<"1"<<"\033[96m"<<"] \033[0m"<<"PADRÓN GENERAL\n";
+   cout<<"\033[96m  ├╴["<<"\033[0m"<<"2"<<"\033[96m"<<"] \033[0m"<<"HISTORIAL DE SERVICIOS\n";
+   cout<<"\033[96m  ├╴["<<"\033[0m"<<"3"<<"\033[96m"<<"] \033[0m"<<"OPERACIONES\n";
+   cout<<"\033[96m  ├╴["<<"\033[0m"<<"4"<<"\033[96m"<<"] \033[0m"<<"NUEVOS REGISTROS\n";
+   cout<<"\033[96m  └╴["<<"\033[0m"<<"0"<<"\033[96m"<<"] \033[0m"<<"GUARDAR Y SALIR\n";
    cout<<"\n\033[96m►► \033[0m"<<"Ingresar opción "<<"\033[96m-→ \033[0m";
 }
 
 void menuPadron(){
    limpiarPantalla();
    titulo("PADRÓN GENERAL", 1);
-   cout<<"├╴[1] PADRÓN DE UNIDADES\n";
-   cout<<"├╴[2] PADRÓN DE OPERADORES\n";
-   cout<<"└╴[0] REGRESAR AL MENÚ PRINCIPAL\n";
-   cout<<"\n►► Ingresar opción -→ ";
+   cout<<"\033[36m"<<"├╴["<<"\033[0m"<<"1"<<"\033[36m"<<"] \033[0m"<<"PADRÓN DE UNIDADES\n";
+   cout<<"\033[36m"<<"├╴["<<"\033[0m"<<"2"<<"\033[36m"<<"] \033[0m"<<"PADRÓN DE OPERADORES\n";
+   cout<<"\033[36m"<<"└╴["<<"\033[0m"<<"0"<<"\033[36m"<<"] \033[0m"<<"REGRESAR AL MENÚ PRINCIPAL\n";
+   cout<<"\n\033[36m►► \033[0m"<<"Ingresar opción "<<"\033[36m-→ \033[0m";
 }
 
 void menuOperaciones(){
    limpiarPantalla();
    titulo("MÓDULO DE OPERACIONES", 1);
-   cout<<"├╴[1] PROGRAMAR NUEVO SERVICIO\n";
-   cout<<"├╴[2] PROCESAR SALIDA DE UNIDAD\n";
-   cout<<"├╴[3] PROCESAR ARRIBO DE UNIDAD\n";
-   cout<<"├╴[4] MARCAR FIN DE DESCANSO\n";
-   cout<<"└╴[0] REGRESAR AL MENÚ PRINCIPAL\n";
-   cout<<"\n►► Ingresar opción -→ ";
+   cout<<"\033[36m"<<"├╴["<<"\033[0m"<<"1"<<"\033[36m"<<"] \033[0m"<<"PROGRAMAR NUEVO SERVICIO\n";
+   cout<<"\033[36m"<<"├╴["<<"\033[0m"<<"2"<<"\033[36m"<<"] \033[0m"<<"PROCESAR SALIDA DE UNIDAD\n";
+   cout<<"\033[36m"<<"├╴["<<"\033[0m"<<"3"<<"\033[36m"<<"] \033[0m"<<"PROCESAR ARRIBO DE UNIDAD\n";
+   cout<<"\033[36m"<<"├╴["<<"\033[0m"<<"4"<<"\033[36m"<<"] \033[0m"<<"MARCAR FIN DE DESCANSO\n";
+   cout<<"\033[36m"<<"└╴["<<"\033[0m"<<"0"<<"\033[36m"<<"] \033[0m"<<"REGRESAR AL MENÚ PRINCIPAL\n";
+   cout<<"\n\033[36m►► \033[0m"<<"Ingresar opción "<<"\033[36m-→ \033[0m";
 }
 
 void menuRegistros(){
    limpiarPantalla();
    titulo("MÓDULO DE REGISTROS", 1);
-   cout<<"├╴[1] REGISTRAR NUEVA UNIDAD\n";
-   cout<<"├╴[2] REGISTRAR NUEVO OPERADOR\n";
-   cout<<"├╴[3] MODIFICAR DATOS\n";
-   cout<<"├╴[4] ELIMINAR UN REGISTRO\n";
-   cout<<"└╴[0] REGRESAR AL MENÚ PRINCIPAL\n";
-   cout<<"\n►► Ingresar opción -→ ";
+   cout<<"\033[36m"<<"├╴["<<"\033[0m"<<"1"<<"\033[36m"<<"] \033[0m"<<"REGISTRAR NUEVA UNIDAD\n";
+   cout<<"\033[36m"<<"├╴["<<"\033[0m"<<"2"<<"\033[36m"<<"] \033[0m"<<"REGISTRAR NUEVO OPERADOR\n";
+   cout<<"\033[36m"<<"├╴["<<"\033[0m"<<"3"<<"\033[36m"<<"] \033[0m"<<"MODIFICAR DATOS\n";
+   cout<<"\033[36m"<<"├╴["<<"\033[0m"<<"4"<<"\033[36m"<<"] \033[0m"<<"ELIMINAR UN REGISTRO\n";
+   cout<<"\033[36m"<<"└╴["<<"\033[0m"<<"0"<<"\033[36m"<<"] \033[0m"<<"REGRESAR AL MENÚ PRINCIPAL\n";
+   cout<<"\n\033[36m►► \033[0m"<<"Ingresar opción "<<"\033[36m-→ \033[0m";
 }
 
 void menuModificar(){
    limpiarPantalla();
    titulo("MODIFICAR DATOS", 2);
-   cout<<"├╴[1] UNIDAD\n";
-   cout<<"├╴[2] OPERADOR\n";
-   cout<<"├╴[3] SERVICIO\n";
-   cout<<"└╴[0] REGRESAR AL MENÚ DE REGISTROS\n";
-   cout<<"\n►► Ingresar opción -→ ";
+   cout<<"\033[34m"<<"├╴["<<"\033[0m"<<"1"<<"\033[34m"<<"] \033[0m"<<"UNIDAD\n";
+   cout<<"\033[34m"<<"├╴["<<"\033[0m"<<"2"<<"\033[34m"<<"] \033[0m"<<"OPERADOR\n";
+   cout<<"\033[34m"<<"├╴["<<"\033[0m"<<"3"<<"\033[34m"<<"] \033[0m"<<"SERVICIO\n";
+   cout<<"\033[34m"<<"└╴["<<"\033[0m"<<"0"<<"\033[34m"<<"] \033[0m"<<"REGRESAR AL MENÚ DE REGISTROS\n";
+   cout<<"\n\033[34m►► \033[0m"<<"Ingresar opción "<<"\033[34m-→ \033[0m";
 }
 
 void menuEliminar(){
    limpiarPantalla();
    titulo("ELIMINAR UN REGISTRO", 2);
-   cout<<"├╴[1] UNIDAD\n";
-   cout<<"├╴[2] OPERADOR\n";
-   cout<<"├╴[3] SERVICIO\n";
-   cout<<"└╴[0] REGRESAR AL MENÚ DE REGISTROS\n";
-   cout<<"\n►► Ingresar opción -→ ";
+   cout<<"\033[34m"<<"├╴["<<"\033[0m"<<"1"<<"\033[34m"<<"] \033[0m"<<"UNIDAD\n";
+   cout<<"\033[34m"<<"├╴["<<"\033[0m"<<"2"<<"\033[34m"<<"] \033[0m"<<"OPERADOR\n";
+   cout<<"\033[34m"<<"├╴["<<"\033[0m"<<"3"<<"\033[34m"<<"] \033[0m"<<"SERVICIO\n";
+   cout<<"\033[34m"<<"└╴["<<"\033[0m"<<"0"<<"\033[34m"<<"] \033[0m"<<"REGRESAR AL MENÚ DE REGISTROS\n";
+   cout<<"\n\033[34m►► \033[0m"<<"Ingresar opción "<<"\033[34m-→ \033[0m";
 }
 
 void menuFinDescansos(){
    limpiarPantalla();
    titulo("FIN DE DESCANSO", 2);
-   cout<<"├╴[1] UNIDAD\n";
-   cout<<"├╴[2] OPERADOR\n";
-   cout<<"└╴[0] REGRESAR AL MENÚ DE OPERACIONES\n";
-   cout<<"\n►► Ingresar opción -→ ";
+   cout<<"\033[34m"<<"├╴["<<"\033[0m"<<"1"<<"\033[34m"<<"] \033[0m"<<"UNIDAD\n";
+   cout<<"\033[34m"<<"├╴["<<"\033[0m"<<"2"<<"\033[34m"<<"] \033[0m"<<"OPERADOR\n";
+   cout<<"\033[34m"<<"└╴["<<"\033[0m"<<"0"<<"\033[34m"<<"] \033[0m"<<"REGRESAR AL MENÚ DE OPERACIONES\n";
+   cout<<"\n\033[34m►► \033[0m"<<"Ingresar opción "<<"\033[34m-→ \033[0m";
 }
 
 void menuCamposUnid(Unidad &unidad){
    titulo("CAMPO A MODIFICAR", 3);
-   cout<<"├╴[1] CÓDIGO      (actual: "<<unidad.getCodigo()<<")\n";
-   cout<<"├╴[2] MATRÍCULA   (actual: "<<unidad.getPlaca()<<")\n";
-   cout<<"└╴[0] REGRESAR AL MENÚ DE MODIFICAR DATOS\n";
-   cout<<"\n►► Ingresar opción -→ ";
+   cout<<"\033[35m"<<"├╴["<<"\033[0m"<<"1"<<"\033[35m"<<"] \033[0m"<<"CÓDIGO      (actual: "<<unidad.getCodigo()<<")\n";
+   cout<<"\033[35m"<<"├╴["<<"\033[0m"<<"2"<<"\033[35m"<<"] \033[0m"<<"MATRÍCULA   (actual: "<<unidad.getPlaca()<<")\n";
+   cout<<"\033[35m"<<"└╴["<<"\033[0m"<<"0"<<"\033[35m"<<"] \033[0m"<<"REGRESAR AL MENÚ DE MODIFICAR DATOS\n";
+   cout<<"\n\033[35m►► \033[0m"<<"Ingresar opción "<<"\033[35m-→ \033[0m";
 }
 
 void menuCamposOp(Operador &op){
    titulo("CAMPO A MODIFICAR", 3);
-   cout<<"├╴[1] DNI / C.E.  (actual: "<<op.getDNI()<<")\n";
-   cout<<"├╴[2] NOMBRES     (actual: "<<op.getNombres()<<")\n";
-   cout<<"├╴[3] APELLIDOS   (actual: "<<op.getApellidos()<<")\n";
-   cout<<"└╴[0] REGRESAR AL MENÚ DE MODIFICAR DATOS\n";
-   cout<<"\n►► Ingresar opción -→ ";
+   cout<<"\033[35m"<<"├╴["<<"\033[0m"<<"1"<<"\033[35m"<<"] \033[0m"<<"DNI / C.E.  (actual: "<<op.getDNI()<<")\n";
+   cout<<"\033[35m"<<"├╴["<<"\033[0m"<<"2"<<"\033[35m"<<"] \033[0m"<<"NOMBRES     (actual: "<<op.getNombres()<<")\n";
+   cout<<"\033[35m"<<"├╴["<<"\033[0m"<<"3"<<"\033[35m"<<"] \033[0m"<<"APELLIDOS   (actual: "<<op.getApellidos()<<")\n";
+   cout<<"\033[35m"<<"└╴["<<"\033[0m"<<"0"<<"\033[35m"<<"] \033[0m"<<"REGRESAR AL MENÚ DE MODIFICAR DATOS\n";
+   cout<<"\n\033[35m►► \033[0m"<<"Ingresar opción "<<"\033[35m-→ \033[0m";
 }
 
 void menuCamposServ(Servicio &serv){
    titulo("CAMPO A MODIFICAR", 3);
-   cout<<"├╴[1] UNIDAD ASIGNADA     (actual: UNIDAD "<<serv.getCodigoUnid()<<")\n";
-   cout<<"├╴[2] OPERADOR ASIGNADO   (actual: OPERADOR "<<serv.getCodigoOp()<<")\n";
-   cout<<"├╴[3] DESTINO             (actual: "<<serv.getDestino()<<")\n";
-   cout<<"└╴[0] REGRESAR AL MENÚ DE MODIFICAR DATOS\n";
-   cout<<"\n►► Ingresar opción -→ ";
+   cout<<"\033[35m"<<"├╴["<<"\033[0m"<<"1"<<"\033[35m"<<"] \033[0m"<<"UNIDAD ASIGNADA     (actual: UNIDAD "<<serv.getCodigoUnid()<<")\n";
+   cout<<"\033[35m"<<"├╴["<<"\033[0m"<<"2"<<"\033[35m"<<"] \033[0m"<<"OPERADOR ASIGNADO   (actual: OPERADOR "<<serv.getCodigoOp()<<")\n";
+   cout<<"\033[35m"<<"├╴["<<"\033[0m"<<"3"<<"\033[35m"<<"] \033[0m"<<"DESTINO             (actual: "<<serv.getDestino()<<")\n";
+   cout<<"\033[35m"<<"└╴["<<"\033[0m"<<"0"<<"\033[35m"<<"] \033[0m"<<"REGRESAR AL MENÚ DE MODIFICAR DATOS\n";
+   cout<<"\n\033[35m►► \033[0m"<<"Ingresar opción "<<"\033[35m-→ \033[0m";
 }
 
 void pausar(){
@@ -428,7 +428,7 @@ bool confirmarAccion(const string &mensaje){
       string t=capitalizarTexto(entrada);
       if (t=="S" || t=="SI" || t=="SÍ") return true;
       if (t=="N" || t=="NO") return false;
-      cout<<"\033[31m[ERROR] Responda 'S' para confirmar o 'N' para cancelar.\033[0m\n";
+      cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Responda con 'S' para confirmar o 'N' para cancelar.\n";
    }
 }
 
@@ -440,7 +440,7 @@ bool leerTexto(const string &mensaje, string &variableDestino, bool permitirVaci
       getline(cin, entrada);
       if (esCancelacion(entrada)) return false;
       if (entrada.empty() && !permitirVacio){
-         cout<<"\033[31m[ERROR] Campo obligatorio. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+         cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Campo obligatorio. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
          continue;
       }
       variableDestino=capitalizarTexto(entrada);
@@ -458,18 +458,18 @@ bool leerEntero(const string &mensaje, int &variableDestino, int minimo=INT_MIN,
       size_t desdeDigito=0;
       if (!entrada.empty() && (entrada[0]=='-' || entrada[0]=='+')) desdeDigito=1;
       if (!esSoloDigitos(entrada, desdeDigito)){
-         cout<<"\033[31m[ERROR] Debe ingresar un numero valido. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+         cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Debe ingresar un número valido. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
          continue;
       }
       int numero{};
       try{
          numero=stoi(entrada);
       } catch(...){
-         cout<<"\033[31m[ERROR] El numero ingresado es demasiado grande. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+         cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" El número ingresado es demasiado grande. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
          continue;
       }
       if (numero<minimo || numero>maximo){
-         cout<<"\033[31m[ERROR] El valor debe estar entre "<<minimo<<" y "<<maximo<<". (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+         cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" El valor debe estar entre "<<minimo<<" y "<<maximo<<". (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
          continue;
       }
       variableDestino=numero;
@@ -485,13 +485,13 @@ bool leerDNI(const string &mensaje, int &variableDestino){
       getline(cin, entrada);
       if (esCancelacion(entrada)) return false;
       if (!esSoloDigitos(entrada) || entrada.size()<8 || entrada.size()>12){
-         cout<<"\033[31m[ERROR] El DNI/C.E. debe tener entre 8 y 12 digitos numericos. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+         cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" El DNI/C.E. debe tener entre 8 y 12 digitos numéricos. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
          continue;
       }
       try{
          variableDestino=stoi(entrada);
       } catch(...){
-         cout<<"\033[31m[ERROR] El DNI/C.E. ingresado no es valido. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+         cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" El DNI/C.E. ingresado no es válido. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
          continue;
       }
       return true;
@@ -515,7 +515,7 @@ bool leerPlaca(const string &mensaje, string &variableDestino){
       getline(cin, entrada);
       if (esCancelacion(entrada)) return false;
       if (!tieneFormatoPlaca(entrada)){
-         cout<<"\033[31m[ERROR] Formato de placa no valido. Use el formato ABC-123. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+         cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Formato de matrícula no válido. Recomendado: ABC-123. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
          continue;
       }
       variableDestino=capitalizarTexto(entrada);
@@ -548,10 +548,10 @@ void cargarUNIDADES(vector<Unidad>& padron){
          capacidad=stoi(strCap); // Convertir string a entero
          padron.push_back(Unidad(placa, cod, capacidad, estado));
       }
-      cout<<"\r[OK] Datos de UNIDADES cargados exitosamente."<<endl;
+      cout<<"\r\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" Datos de UNIDADES cargados al programa."<<endl;
       archivo.close();
    }
-   else cout<<"\rError al leer el archivo. No se pueden cargar los datos."<<endl;
+   else cout<<"\r\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Archivo no encontrado. No se cargaron datos."<<endl;
 }
 
 void cargarOPERADORES(vector<Operador>& padron){
@@ -574,10 +574,10 @@ void cargarOPERADORES(vector<Operador>& padron){
          dni=stoi(strDNI);
          padron.push_back(Operador(cod, dni, nombres, apellidos, estado));
       }
-      cout<<"\r[OK] Datos de OPERADORES cargados exitosamente."<<endl;
+      cout<<"\r\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" Datos de OPERADORES cargados al programa."<<endl;
       archivo.close();
    }
-   else cout<<"\rError al leer el archivo. No se pueden cargar los datos."<<endl;
+   else cout<<"\r\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Archivo no encontrado. No se cargaron datos."<<endl;
 }
 
 void cargarSERVICIOS(vector<Servicio>& padron){
@@ -603,10 +603,10 @@ void cargarSERVICIOS(vector<Servicio>& padron){
          pasajeros=stoi(strPasaj);
          padron.push_back(Servicio(id, codUnid, codOp, pasajeros, destino, estado));
       }
-      cout<<"\r[OK] Datos de SERVICIOS cargados exitosamente."<<endl;
+      cout<<"\r\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" Datos de SERVICIOS cargados al programa."<<endl;
       archivo.close();
    }
-   else cout<<"\rError al leer el archivo. No se pueden cargar los datos."<<endl;
+   else cout<<"\r\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Archivo no encontrado. No se cargaron datos."<<endl;
 }
 
 // Guarda los datos de la RAM al disco duro al salir
@@ -622,11 +622,9 @@ void guardarUNIDADES(vector<Unidad>& padron){
                 <<padron[i].getEstado()<<"\n";
       }
       archivo.close();
-      cout<<"\r[OK] Datos guardados exitosamente. Cierre seguro."<<endl;
+      cout<<"\r\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" Datos de UNIDADES guardados en el disco."<<endl;
    }
-   else{
-      cout<<"\r[ERROR CRITICO] No se pudo guardar en el disco."<<endl;
-   }
+   else cout<<"\r\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR CRÍTICO \033[0m"<<" No se concretó el guardado en disco."<<endl;
 }
 
 void guardarOPERADORES(vector<Operador>& padron){
@@ -642,11 +640,9 @@ void guardarOPERADORES(vector<Operador>& padron){
                 <<padron[i].getEstado()<<"\n";
       }
       archivo.close();
-      cout<<"\r[OK] Datos guardados exitosamente. Cierre seguro."<<endl;
+      cout<<"\r\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" Datos de OPERADORES guardados en el disco."<<endl;
    }
-   else{
-      cout<<"\r[ERROR CRITICO] No se pudo guardar en el disco."<<endl;
-   }
+   else cout<<"\r\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR CRÍTICO \033[0m"<<" No se concretó el guardado en disco."<<endl;
 }
 
 void guardarSERVICIOS(vector<Servicio>& historial){
@@ -663,17 +659,15 @@ void guardarSERVICIOS(vector<Servicio>& historial){
                 <<historial[i].getEstado()<<"\n";
       }
       archivo.close();
-      cout<<"\r[OK] Datos guardados exitosamente. Cierre seguro."<<endl;
+      cout<<"\r\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" Datos de SERVICIOS guardados en el disco."<<endl;
    }
-   else{
-      cout<<"\r[ERROR CRITICO] No se pudo guardar en el disco."<<endl;
-   }
+   else cout<<"\r\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR CRÍTICO \033[0m"<<" No se concretó el guardado en disco."<<endl;
 }
 
 // === LOGICA DE NEGOCIO Y FUNCIONALIDADES ===
 void imprimirTablaUnid(vector<Unidad>& padron){
    if (padron.empty()){
-      cout<<"\033[33m[ALERTA] No hay unidades registradas en el padron.\033[0m"<<endl;
+      cout<<"\033[33m▌ \033[0m"<<"\033[2;30;43m ALERTA \033[0m"<<" Padrón sin unidades registradas.\n";
       return;
    }
    sort(padron.begin(), padron.end(), [](Unidad &a, Unidad &b){
@@ -706,7 +700,7 @@ void mostrarPadronUnid(vector<Unidad>& padron){
 
 void imprimirTablaOp(vector<Operador>& padron){
    if (padron.empty()){
-      cout<<"\033[33m[ALERTA] No hay operadores registrados en el padron.\033[0m"<<endl;
+      cout<<"\033[33m▌ \033[0m"<<"\033[2;30;43m ALERTA \033[0m"<<" Padrón sin operadores registrados.\n";
       return;
    }
    sort(padron.begin(), padron.end(), [](Operador &a, Operador &b){
@@ -744,7 +738,7 @@ void mostrarHistorialServ(vector<Servicio>& historial){
    titulo("HISTORIAL DE SERVICIOS", 1);
    cout<<endl;
    if (historial.empty()){
-      cout<<"\033[33m[ALERTA] No hay servicios registrados en el historial.\033[0m"<<endl;
+      cout<<"\033[33m▌ \033[0m"<<"\033[2;30;43m ALERTA \033[0m"<<" Historial sin servicios registrados.\n";
    }
    else{
       sort(historial.begin(), historial.end(), [](Servicio &a, Servicio &b){
@@ -780,7 +774,8 @@ int seleccionarUnidDisponible(vector<Unidad>& padron, int capacidadMinima){
       }
    }
    if (indexUnid.empty()){
-      cout<<"\n\033[33m[ALERTA] No hay unidades disponibles con capacidad para "<<capacidadMinima<<" pasajeros.\033[0m\n";
+      cout<<"\n\033[33m▌ \033[0m"<<"\033[2;30;43m ALERTA \033[0m"<<" No hay unidades DISPONIBLES con capacidad para "<<capacidadMinima<<" pasajeros.\n";
+      // AÑADIR NOTA
       cout<<"Considere fraccionar el servicio asignando en multiples unidades mas pequeñas.\n";
       return -1;
    }
@@ -819,7 +814,7 @@ int seleccionarOpDisponible(vector<Operador>& padron){
       }
    }
    if (indexOp.empty()){
-      cout<<"\n\033[31m[ERROR] No hay operadores DISPONIBLES en este momento. Intente nuevamente mas tarde.\033[0m\n";
+      cout<<"\n\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" No hay operadores DISPONIBLES en este momento.\n";
       return -1;
    }
 
@@ -845,7 +840,7 @@ int seleccionarOpDisponible(vector<Operador>& padron){
             break;
          }
       }
-      if (!validOp) cout<<"\033[31m[!] Codigo invalido u operador no disponible. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+      if (!validOp) cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Código inválido u operador no disponible. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
    } while (!validOp);
 
    return indexOpE;
@@ -856,23 +851,23 @@ void programarNuevoServ(vector<Unidad>& padronUnid, vector<Operador>& padronOp, 
    int pasajeros{};
    string destino{};
    titulo("PROGRAMAR NUEVO SERVICIO", 2);
+   // añadir nota
    cout<<"\033[33m(Puede escribir 'Q' en cualquier momento para cancelar la programación)\033[0m\n\n";
 
    if (!leerTexto("DESTINO: ", destino)){
-      cout<<"\n\033[33m[CANCELADO] Programación de servicio cancelada. No se guardaron cambios.\033[0m\n";
+      cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Programación de servicio anulada.\n";
       pausar();
       return;
    }
    if (!leerEntero("N° PASAJEROS: ", pasajeros, 1, 270)){
-      cout<<"\n\033[33m[CANCELADO] Programación de servicio cancelada. No se guardaron cambios.\033[0m\n";
+      cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Programación de servicio anulada.\n";
       pausar();
       return;
    }
-
    //Mostrar y seleccionar Unidad
    int indexUnidE=seleccionarUnidDisponible(padronUnid, pasajeros);
    if (indexUnidE==-1){
-      cout<<"\n\033[33m[CANCELADO] Programación de servicio cancelada. No se guardaron cambios.\033[0m\n";
+      cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Programación de servicio anulada.\n";
       pausar();
       return;
    }
@@ -880,7 +875,7 @@ void programarNuevoServ(vector<Unidad>& padronUnid, vector<Operador>& padronOp, 
    //Mostrar y seleccionar Operador
    int indexOpE=seleccionarOpDisponible(padronOp);
    if (indexOpE==-1){
-      cout<<"\n\033[33m[CANCELADO] Programación de servicio cancelada. No se guardaron cambios.\033[0m\n";
+      cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Programación de servicio anulada.\n";
       pausar();
       return;
    }
@@ -892,7 +887,7 @@ void programarNuevoServ(vector<Unidad>& padronUnid, vector<Operador>& padronOp, 
    historial.push_back(Servicio(id, codUnidE, codOpE, pasajeros, destino, "Pendiente"));
    padronUnid[indexUnidE].setEstado("Asignado");
    padronOp[indexOpE].setEstado("Asignado");
-   cout<<"\n\033[32m[EXITO] Servicio "<<id<<" programado correctamente.\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" Servicio "<<id<<" programado correctamente.\n";
    cout<<"Unidad asignada: " <<codUnidE<< " | Operador asignado: "<<codOpE<<endl;
    pausar();
 }
@@ -909,7 +904,7 @@ void procesarSalida(vector<Servicio>& historial){
       }
    }
    if (indexPend.empty()){
-      cout<<"\n\033[33m[ALERTA] No hay servicios PENDIENTES por procesar en este momento.\033[0m\n";
+      cout<<"\n\033[33m▌ \033[0m"<<"\033[2;30;43m ALERTA \033[0m"<<" No hay servicios PENDIENTES por procesar.\n";
       pausar();
       return; 
    }
@@ -934,7 +929,7 @@ void procesarSalida(vector<Servicio>& historial){
    bool validID=false;
    do {
       if (!leerEntero("\nID del servicio ACTIVO: ", idServSalida)){
-         cout<<"\n\033[33m[CANCELADO] Proceso de salida cancelado. No se guardaron cambios.\033[0m\n";
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Proceso de salida anulado.\n";
          pausar();
          return;
       }
@@ -945,11 +940,11 @@ void procesarSalida(vector<Servicio>& historial){
             break;
          }
       }
-      if (!validID) cout<<"\033[31m[!] ID invalido o no esta en estado PENDIENTE. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+      if (!validID) cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" ID inválido o no está en estado PENDIENTE. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
    } while (!validID);
 
    historial[indexServE].setEstado("Activo");
-   cout<<"\n\033[32m[EXITO] El servicio "<<idServSalida<<" ha iniciado su ruta.\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" El servicio "<<idServSalida<<" ha iniciado su ruta.\n";
    pausar();
 }
 
@@ -965,7 +960,7 @@ void procesarArribo(vector<Unidad>& padronUnid, vector<Operador>& padronOp, vect
       }
    }
    if (indexActivos.empty()){
-      cout<<"\n\033[33m[ALERTA] No hay servicios ACTIVOS en ruta en este momento.\033[0m\n";
+      cout<<"\n\033[33m▌ \033[0m"<<"\033[2;30;43m ALERTA \033[0m"<<" No hay servicios ACTIVOS en ruta.\n";
       pausar();
       return; 
    }
@@ -990,7 +985,7 @@ void procesarArribo(vector<Unidad>& padronUnid, vector<Operador>& padronOp, vect
    bool validID=false;
    do {
       if (!leerEntero("\nID del servicio COMPLETADO: ", idServArribo)){
-         cout<<"\n\033[33m[CANCELADO] Proceso de arribo cancelado. No se guardaron cambios.\033[0m\n";
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Proceso de arribo anulado.\n";
          pausar();
          return;
       }
@@ -1001,7 +996,7 @@ void procesarArribo(vector<Unidad>& padronUnid, vector<Operador>& padronOp, vect
             break;
          }
       }
-      if (!validID) cout<<"\033[31m[!] ID invalido o no esta en estado ACTIVO. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+      if (!validID) cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" ID inválido o no está en estado ACTIVO. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
    } while (!validID);
 
    historial[indexServE].setEstado("Completado");
@@ -1020,7 +1015,7 @@ void procesarArribo(vector<Unidad>& padronUnid, vector<Operador>& padronOp, vect
       }
    }
 
-   cout<<"\n\033[32m[EXITO] El servicio "<<idServArribo<<" se ha completado.\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" El servicio "<<idServArribo<<" se ha completado.\n";
    cout<<"La Unidad "<<codUnidAsig<<" y el Operador "<<codOpAsig<<" han pasado a estado EN REPOSO.\n";
    pausar();
 }
@@ -1038,7 +1033,7 @@ void completarDescansoUnid(vector<Unidad>& padron){
       }
    }
    if (indexReposo.empty()){
-      cout<<"\033[33m[ALERTA] No hay unidades en estado EN REPOSO en este momento.\033[0m\n";
+      cout<<"\033[33m▌ \033[0m"<<"\033[2;30;43m ALERTA \033[0m"<<" No hay unidades en estado EN REPOSO.\n";
       pausar();
       return;
    }
@@ -1059,7 +1054,7 @@ void completarDescansoUnid(vector<Unidad>& padron){
    bool validCod=false;
    do {
       if (!leerEntero("\nCODIGO de la UNIDAD en reposo: ", codUnidE)){
-         cout<<"\n\033[33m[CANCELADO] Proceso cancelado. No se guardaron cambios.\033[0m\n";
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Proceso anulado.\n";
          pausar();
          return;
       }
@@ -1070,13 +1065,11 @@ void completarDescansoUnid(vector<Unidad>& padron){
             break;
          }
       }
-      if (!validCod) cout<<"\033[31m[!] Codigo invalido o la unidad no esta en reposo. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+      if (!validCod) cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Código inválido o la unidad no está EN REPOSO. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
    } while (!validCod);
 
-   //Cambio de estado directo: el usuario ya eligio explicitamente esta unidad
-   //de la lista de "en reposo", por lo que no se le vuelve a preguntar nada mas.
    padron[indexUnidE].setEstado("Disponible");
-   cout<<"\n\033[32m[EXITO] La unidad "<<codUnidE<<" ha completado su descanso y vuelve a estar DISPONIBLE.\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" La unidad "<<codUnidE<<" ha completado su descanso y vuelve a estar DISPONIBLE.\n";
    pausar();
 }
 
@@ -1093,7 +1086,7 @@ void completarDescansoOp(vector<Operador>& padron){
       }
    }
    if (indexReposo.empty()){
-      cout<<"\033[33m[ALERTA] No hay operadores en estado EN REPOSO en este momento.\033[0m\n";
+      cout<<"\033[33m▌ \033[0m"<<"\033[2;30;43m ALERTA \033[0m"<<" No hay operadores en estado EN REPOSO.\n";
       pausar();
       return;
    }
@@ -1116,7 +1109,7 @@ void completarDescansoOp(vector<Operador>& padron){
    bool validCod=false;
    do {
       if (!leerEntero("\nCODIGO del OPERADOR en reposo: ", codOpE)){
-         cout<<"\n\033[33m[CANCELADO] Proceso cancelado. No se guardaron cambios.\033[0m\n";
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Proceso anulado.\n";
          pausar();
          return;
       }
@@ -1127,13 +1120,13 @@ void completarDescansoOp(vector<Operador>& padron){
             break;
          }
       }
-      if (!validCod) cout<<"\033[31m[!] Codigo invalido o el operador no esta en reposo. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+      if (!validCod) cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Código inválido o el operador no está EN REPOSO. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
    } while (!validCod);
 
    //Cambio de estado directo: el usuario ya eligio explicitamente este operador
    //de la lista de "en reposo", por lo que no se le vuelve a preguntar nada mas.
    padron[indexOpE].setEstado("Disponible");
-   cout<<"\n\033[32m[EXITO] El operador "<<codOpE<<" ha completado su descanso y vuelve a estar DISPONIBLE.\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" El operador "<<codOpE<<" ha completado su descanso y vuelve a estar DISPONIBLE.\n";
    pausar();
 }
 
@@ -1154,7 +1147,7 @@ void completarDescanso(vector<Unidad>& padronUnid, vector<Operador>& padronOp){
          case '2': completarDescansoOp(padronOp); break;
          case '0': break; // Cancelar sin hacer nada
          default:
-            cout<<"\n\033[31m[ERROR] Opcion no valida.\033[0m\n";
+            cout<<"\n\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Opción no valida. Intente de nuevo.\n";
             pausar();
             break;
       }
@@ -1187,33 +1180,33 @@ void registrarUnidad(vector<Unidad>& padron){
    cout<<"\n\033[33m(Puede escribir 'Q' o 'CANCELAR' en cualquier momento para cancelar el registro)\033[0m\n\n";
 
    if (!leerPlaca("N° DE MATRICULA (ej. ABC-123): ", placa)){
-      cout<<"\n\033[33m[CANCELADO] Registro de unidad cancelado. No se guardaron cambios.\033[0m\n";
+      cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Registro de unidad anulado.\n";
       pausar();
       return;
    }
 
    titulo("TIPOS DE UNIDADES", 3);
-   cout<<"► (1NN) Unidad pequeña         (CAPACIDAD:  8 asientos)\n"
-       <<"► (2NN) Unidad grande          (CAPACIDAD: 45 asientos)\n"
-       <<"► (3NN) Unidad grande premium  (CAPACIDAD: 39 asientos)\n";
+   cout<<"\033[35m▌ \033[0m"<<"\033[2;30;45m 1NN \033[0m"<<" Unidad pequeña         (CAPACIDAD:  8 asientos)\n"
+       <<"\033[35m▌ \033[0m"<<"\033[2;30;45m 2NN \033[0m"<<" Unidad grande          (CAPACIDAD: 45 asientos)\n"
+       <<"\033[35m▌ \033[0m"<<"\033[2;30;45m 3NN \033[0m"<<" Unidad grande premium  (CAPACIDAD: 39 asientos)\n";
 
    bool validCode=false;
    do {
       if (!leerEntero("\nCÓDIGO de la UNIDAD: ", cod)){
-         cout<<"\n\033[33m[CANCELADO] Registro de unidad cancelado. No se guardaron cambios.\033[0m\n";
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Registro de unidad anulado.\n";
          pausar();
          return;
       }
       capacidad=capacidadPorCategoria(categoriaUnid(cod));
       validCode=(capacidad!=0);
       if (!validCode){
-         cout<<"\033[31m[ERROR] Codigo de unidad no valido. Debe estar en el rango 100-399. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+         cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Código de unidad fuera del rango 100-399. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
          continue;
       }
       // Validar que el codigo no este ya asignado a otra unidad del padron
       for (size_t i=0; i<padron.size(); i++){
          if (padron[i].getCodigo()==cod){
-            cout<<"\033[31m[ERROR] El codigo "<<cod<<" ya esta registrado en el padrón. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+            cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" El código "<<cod<<" ya está registrado en el padrón de unidades. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
             validCode=false;
             break;
          }
@@ -1221,7 +1214,7 @@ void registrarUnidad(vector<Unidad>& padron){
    } while (!validCode);
 
    padron.push_back(Unidad(placa, cod, capacidad, "Disponible"));
-   cout<<"\n\033[32m[EXITO] Unidad registrada en memoria temporal.\033[0m"<<endl;
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" Unidad registrada en memoria temporal."<<endl;
    pausar();
 }
 
@@ -1237,15 +1230,15 @@ void registrarOperador(vector<Operador>& padron){
 
    bool validCode=false;
    do {
-      if (!leerEntero("CODIGO DE OPERADOR (ej. 9NN): ", cod)){
-         cout<<"\n\033[33m[CANCELADO] Registro de operador cancelado. No se guardaron cambios.\033[0m\n";
+      if (!leerEntero("CÓDIGO DE OPERADOR (ej. 9NN): ", cod)){
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Registro de operador anulado.\n";
          pausar();
          return;
       }
       validCode=true;
       for (size_t i=0; i<padron.size(); i++){
          if (padron[i].getCodigo()==cod){
-            cout<<"\033[31m[ERROR] El codigo "<<cod<<" ya esta registrado en el padron. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+            cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" El código "<<cod<<" ya está registrado en el padrón de operadores. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
             validCode=false;
             break;
          }
@@ -1254,33 +1247,34 @@ void registrarOperador(vector<Operador>& padron){
    bool validDNI=false;
    do {
       if (!leerDNI("DNI / C.E.: ", dni)){
-         cout<<"\n\033[33m[CANCELADO] Registro de operador cancelado. No se guardaron cambios.\033[0m\n";
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Registro de operador anulado.\n";
          pausar();
          return;
       }
       validDNI=true;
       for (size_t i=0; i<padron.size(); i++){
          if (padron[i].getDNI()==dni){
-            cout<<"\033[31m[ERROR] El DNI "<<dni<<" ya esta registrado en el padron. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+            cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" El DNI "<<dni<<" ya está registrado en el padrón de operadores. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
             validDNI=false;
             break;
          }
       }
    } while (!validDNI);
+   cout<<endl;
    titulo("NOMBRE COMPLETO", 3);
    if (!leerTexto("NOMBRES: ", nombres)){
-      cout<<"\n\033[33m[CANCELADO] Registro de operador cancelado. No se guardaron cambios.\033[0m\n";
+      cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Registro de operador anulado.\n";
       pausar();
       return;
    }
    if (!leerTexto("APELLIDOS: ", apellidos)){
-      cout<<"\n\033[33m[CANCELADO] Registro de operador cancelado. No se guardaron cambios.\033[0m\n";
+      cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Registro de operador anulado.\n";
       pausar();
       return;
    }
 
    padron.push_back(Operador(cod, dni, nombres, apellidos, "Disponible"));
-   cout<<"\n\033[32m[EXITO] Operador registrado en memoria temporal.\033[0m"<<endl;
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" Operador registrado en memoria temporal."<<endl;
    pausar();
 }
 
@@ -1292,25 +1286,25 @@ void modificarCodigoUnid(vector<Unidad>& padron, int index){
    cout<<"\n\033[33m[!] El CÓDIGO solo puede cambiar si la unidad pasa a otra CATEGORÍA (ej. de 3NN a 2NN).\033[0m\n";
    cout<<"\033[33m(Puede escribir 'Q' o 'CANCELAR' para cancelar el cambio)\033[0m\n";
    titulo("TIPOS DE UNIDADES", 3);
-   cout<<"► (1NN) Unidad pequeña         (CAPACIDAD:  8 asientos)\n"
-       <<"► (2NN) Unidad grande          (CAPACIDAD: 45 asientos)\n"
-       <<"► (3NN) Unidad grande premium  (CAPACIDAD: 39 asientos)\n";
+   cout<<"\033[35m▌ \033[0m"<<"\033[2;30;45m 1NN \033[0m"<<" Unidad pequeña         (CAPACIDAD:  8 asientos)\n"
+       <<"\033[35m▌ \033[0m"<<"\033[2;30;45m 2NN \033[0m"<<" Unidad grande          (CAPACIDAD: 45 asientos)\n"
+       <<"\033[35m▌ \033[0m"<<"\033[2;30;45m 3NN \033[0m"<<" Unidad grande premium  (CAPACIDAD: 39 asientos)\n";
 
    int nuevoCod{};
    bool validCod=false;
    do {
       if (!leerEntero("\nNUEVO CÓDIGO de la UNIDAD: ", nuevoCod)){
-         cout<<"\n\033[33m[CANCELADO] No se modificó el código.\033[0m\n";
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Modificación de código anulada.\n";
          pausar();
          return;
       }
       int nuevaCategoria=categoriaUnid(nuevoCod);
       if (nuevaCategoria==0){
-         cout<<"\033[31m[ERROR] Código de unidad no válido. Debe estar en el rango 100-399. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+         cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Código de unidad fuera del rango 100-399. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
          continue;
       }
       if (nuevaCategoria==categoriaActual){
-         cout<<"\033[31m[!] Ese código pertenece a la MISMA categoria ("<<categoriaActual<<"NN). Solo se permite el cambio si la unidad pasa a otra categoria. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+         cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Misma categoria ("<<categoriaActual<<"NN). Solo se permite el cambio a otra categoria. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
          continue;
       }
       bool duplicado=false;
@@ -1321,7 +1315,7 @@ void modificarCodigoUnid(vector<Unidad>& padron, int index){
          }
       }
       if (duplicado){
-         cout<<"\033[31m[ERROR] El código "<<nuevoCod<<" ya esta registrado en el padrón. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+         cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" El código "<<nuevoCod<<" ya está registrado en el padrón de unidades. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
          continue;
       }
       validCod=true;
@@ -1329,8 +1323,8 @@ void modificarCodigoUnid(vector<Unidad>& padron, int index){
    int nuevaCapacidad=capacidadPorCategoria(categoriaUnid(nuevoCod));
    padron[index].setCodigo(nuevoCod);
    padron[index].setCapacidad(nuevaCapacidad);
-   cout<<"\n\033[32m[EXITO] La unidad cambio de categoria. CÓDIGO: "<<codActual<<" -→ "<<nuevoCod
-       <<" | CAPACIDAD actualizada a "<<nuevaCapacidad<<" asientos.\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" La unidad cambió de categoría. Código: "<<codActual<<" -→ "<<nuevoCod
+       <<" | Capacidad actualizada a "<<nuevaCapacidad<<" asientos.\n";
    pausar();
 }
 
@@ -1341,7 +1335,7 @@ void modificarPlacaUnid(vector<Unidad>& padron, int index){
    bool validPlaca=false;
    do {
       if (!leerPlaca("NUEVA MATRÍCULA (ej. ABC-123): ", nuevaPlaca)){
-         cout<<"\n\033[33m[CANCELADO] No se modifico la placa.\033[0m\n";
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Modificación de matrícula anulada.\n";
          pausar();
          return;
       }
@@ -1353,13 +1347,13 @@ void modificarPlacaUnid(vector<Unidad>& padron, int index){
          }
       }
       if (duplicado){
-         cout<<"\033[31m[ERROR] La placa "<<nuevaPlaca<<" ya esta registrada en el padrón. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+         cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" La placa "<<nuevaPlaca<<" ya está registrada en el padrón de unidades. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
          continue;
       }
       validPlaca=true;
    } while (!validPlaca);
    padron[index].setPlaca(nuevaPlaca);
-   cout<<"\n\033[32m[EXITO] Placa actualizada: "<<placaActual<<" -→ "<<nuevaPlaca<<"\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" Matrícula actualizada: "<<placaActual<<" -→ "<<nuevaPlaca<<"\n";
    pausar();
 }
 
@@ -1377,8 +1371,8 @@ void modificarUnidad(vector<Unidad>& padron){
    int codUnidE{}, indexUnidE=-1;
    bool validCod=false;
    do {
-      if (!leerEntero("\nCÓDIGO de la UNIDAD a modificar: ", codUnidE)){
-         cout<<"\n\033[33m[CANCELADO] Proceso cancelado. No se guardaron cambios.\033[0m\n";
+      if (!leerEntero("\nCÓDIGO de la unidad a modificar: ", codUnidE)){
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Modificación de unidad anulada.\n";
          pausar();
          return;
       }
@@ -1408,7 +1402,7 @@ void modificarUnidad(vector<Unidad>& padron){
          case '2': modificarPlacaUnid(padron, indexUnidE); break;
          case '0': break; // Regresa al menu de Modificar Datos
          default:
-            cout<<"\n\033[31m[ERROR] Opcion no valida.\033[0m\n";
+            cout<<"\n\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Opción no válida. Intente de nuevo.\033[0m\n";
             pausar();
             break;
       }
@@ -1420,12 +1414,12 @@ void modificarNombresOp(Operador &op){
    cout<<"\nNOMBRES ACTUALES: "<<actual<<"\n";
    string nuevo{};
    if (!leerTexto("NUEVOS NOMBRES: ", nuevo)){
-      cout<<"\n\033[33m[CANCELADO] No se modificaron los nombres.\033[0m\n";
+      cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Modificación de nombres anulada.\n";
       pausar();
       return;
    }
    op.setNombres(nuevo);
-   cout<<"\n\033[32m[EXITO] Nombres actualizados: "<<actual<<" -→ "<<nuevo<<"\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" Nombres actualizados: "<<actual<<" -→ "<<nuevo<<"\n";
    pausar();
 }
 
@@ -1434,12 +1428,12 @@ void modificarApellidosOp(Operador &op){
    cout<<"\nAPELLIDOS ACTUALES: "<<actual<<"\n";
    string nuevo{};
    if (!leerTexto("NUEVOS APELLIDOS: ", nuevo)){
-      cout<<"\n\033[33m[CANCELADO] No se modificaron los apellidos.\033[0m\n";
+      cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Modificación de apellidos anulada.\n";
       pausar();
       return;
    }
    op.setApellidos(nuevo);
-   cout<<"\n\033[32m[EXITO] Apellidos actualizados: "<<actual<<" -→ "<<nuevo<<"\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" Apellidos actualizados: "<<actual<<" -→ "<<nuevo<<"\n";
    pausar();
 }
 
@@ -1450,7 +1444,7 @@ void modificarDNIOp(vector<Operador>& padron, int index){
    bool validDNI=false;
    do {
       if (!leerDNI("NUEVO DNI/C.E.: ", nuevoDNI)){
-         cout<<"\n\033[33m[CANCELADO] No se modifico el DNI/C.E.\033[0m\n";
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Modificación de DNI/C.E. anulada.\n";
          pausar();
          return;
       }
@@ -1462,13 +1456,13 @@ void modificarDNIOp(vector<Operador>& padron, int index){
          }
       }
       if (duplicado){
-         cout<<"\033[31m[ERROR] El DNI/C.E. "<<nuevoDNI<<" ya esta registrado en el padrón. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\033[0m\n";
+         cout<<"\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" El DNI/C.E. "<<nuevoDNI<<" ya está registrado en el padrón de operadores. (Escriba 'Q' o 'CANCELAR' si desea cancelar)\n";
          continue;
       }
       validDNI=true;
    } while (!validDNI);
    padron[index].setDNI(nuevoDNI);
-   cout<<"\n\033[32m[EXITO] DNI/C.E. actualizado: "<<actual<<" -→ "<<nuevoDNI<<"\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" DNI/C.E. actualizado: "<<actual<<" -→ "<<nuevoDNI<<"\n";
    pausar();
 }
 
@@ -1486,8 +1480,8 @@ void modificarOperador(vector<Operador>& padron){
    int codOpE{}, indexOpE=-1;
    bool validCod=false;
    do {
-      if (!leerEntero("\nCODIGO del OPERADOR a modificar: ", codOpE)){
-         cout<<"\n\033[33m[CANCELADO] Proceso cancelado. No se guardaron cambios.\033[0m\n";
+      if (!leerEntero("\nCODIGO del operador a modificar: ", codOpE)){
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Modificación de operador anulada.\n";
          pausar();
          return;
       }
@@ -1518,7 +1512,7 @@ void modificarOperador(vector<Operador>& padron){
          case '3': modificarApellidosOp(padron[indexOpE]); break;
          case '0': break; // Regresa al menu de Modificar Datos
          default:
-            cout<<"\n\033[31m[ERROR] Opcion no valida.\033[0m\n";
+            cout<<"\n\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Opción no válida. Intente de nuevo.\n";
             pausar();
             break;
       }
@@ -1530,36 +1524,27 @@ void modificarDestinoServ(Servicio &serv){
    cout<<"\nDESTINO ACTUAL: "<<actual<<"\n";
    string nuevo{};
    if (!leerTexto("NUEVO DESTINO: ", nuevo)){
-      cout<<"\n\033[33m[CANCELADO] No se modifico el destino.\033[0m\n";
+      cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Modificación de destino anulada.\n";
       pausar();
       return;
    }
    serv.setDestino(nuevo);
-   cout<<"\n\033[32m[EXITO] Destino actualizado: "<<actual<<" -→ "<<nuevo<<"\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" Destino actualizado: "<<actual<<" -→ "<<nuevo<<"\n";
    pausar();
 }
 
-// Reasigna la UNIDAD y el OPERADOR de un servicio pendiente. Vuelve a
-// mostrar las listas de unidades/operadores DISPONIBLES (reutilizando los
-// mismos selectores de programarNuevoServ()) para elegir los nuevos, y solo
-// libera la asignacion anterior si el usuario confirma ambas elecciones; si
-// cancela en cualquier punto, la asignacion original queda intacta.
-// Permite modificar SOLO la unidad asignada al servicio
 void modificarUnidadServ(vector<Unidad>& padronUnid, Servicio &serv){
    limpiarPantalla();
    titulo("CAMBIAR UNIDAD ASIGNADA", 3);
    cout<<"\nActualmente asignada -> UNIDAD: "<<serv.getCodigoUnid()<<"\n";
    cout<<"\033[33m(Puede escribir 'Q' o 'CANCELAR' en cualquier momento para cancelar el reemplazo)\033[0m\n";
 
-   // 1. Elegir nueva unidad (respetando la capacidad de pasajeros del servicio)
    int indexNuevaUnid = seleccionarUnidDisponible(padronUnid, serv.getNumPasajeros());
    if (indexNuevaUnid == -1){
-      cout<<"\n\033[33m[CANCELADO] Se conserva la unidad actual.\033[0m\n";
+      cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Modificación de unidad anulada.\n";
       pausar();
       return;
    }
-
-   // 2. Liberar la unidad anterior
    int codUnidAnterior = serv.getCodigoUnid();
    for (size_t i = 0; i < padronUnid.size(); i++){
       if (padronUnid[i].getCodigo() == codUnidAnterior) {
@@ -1567,31 +1552,24 @@ void modificarUnidadServ(vector<Unidad>& padronUnid, Servicio &serv){
          break; // Optimización: ya lo encontramos, salimos del bucle
       }
    }
-
-   // 3. Ocupar la nueva unidad y actualizar el servicio
    padronUnid[indexNuevaUnid].setEstado("Asignado");
    serv.setCodigoUnid(padronUnid[indexNuevaUnid].getCodigo());
-
-   cout<<"\n\033[32m[EXITO] Unidad actualizada -→ "<<codUnidAnterior<<" -→ "<<serv.getCodigoUnid()<<"\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" Unidad actualizada: "<<codUnidAnterior<<" -→ "<<serv.getCodigoUnid()<<"\n";
    pausar();
 }
 
-// Permite modificar SOLO el operador asignado al servicio
 void modificarOperadorServ(vector<Operador>& padronOp, Servicio &serv){
    limpiarPantalla();
    titulo("CAMBIAR OPERADOR ASIGNADO", 3);
    cout<<"\nActualmente asignado -> OPERADOR: "<<serv.getCodigoOp()<<"\n";
    cout<<"\033[33m(Puede escribir 'Q' o 'CANCELAR' en cualquier momento para cancelar el reemplazo)\033[0m\n";
 
-   // 1. Elegir nuevo operador
    int indexNuevoOp = seleccionarOpDisponible(padronOp);
    if (indexNuevoOp == -1){
-      cout<<"\n\033[33m[CANCELADO] Se conserva el operador actual.\033[0m\n";
+      cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Modificación de operador anulada.\n";
       pausar();
       return;
    }
-
-   // 2. Liberar el operador anterior
    int codOpAnterior = serv.getCodigoOp();
    for (size_t i = 0; i < padronOp.size(); i++){
       if (padronOp[i].getCodigo() == codOpAnterior) {
@@ -1599,18 +1577,12 @@ void modificarOperadorServ(vector<Operador>& padronOp, Servicio &serv){
          break; // Optimización
       }
    }
-
-   // 3. Ocupar el nuevo operador y actualizar el servicio
    padronOp[indexNuevoOp].setEstado("Asignado");
    serv.setCodigoOp(padronOp[indexNuevoOp].getCodigo());
-
-   cout<<"\n\033[32m[EXITO] Operador actualizado -→ "<<codOpAnterior<<" -→ "<<serv.getCodigoOp()<<"\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" Operador actualizado: "<<codOpAnterior<<" -→ "<<serv.getCodigoOp()<<"\n";
    pausar();
 }
 
-// Elige un servicio en estado "Pendiente" y permite editar su destino y/o su
-// unidad/operador asignado. Solo se listan los servicios Pendientes porque
-// un servicio Activo o Completado ya no deberia reprogramarse por aqui.
 void modificarServicio(vector<Unidad>& padronUnid, vector<Operador>& padronOp, vector<Servicio>& historial){
    limpiarPantalla();
    titulo("MODIFICAR SERVICIO", 2);
@@ -1623,7 +1595,7 @@ void modificarServicio(vector<Unidad>& padronUnid, vector<Operador>& padronOp, v
       }
    }
    if (indexPend.empty()){
-      cout<<"\033[33m[ALERTA] No hay servicios en estado PENDIENTE para modificar.\033[0m\n";
+      cout<<"\033[33m▌ \033[0m"<<"\033[2;30;43m ALERTA \033[0m"<<" No hay servicios en estado PENDIENTE para modificar.\n";
       pausar();
       return;
    }
@@ -1646,7 +1618,7 @@ void modificarServicio(vector<Unidad>& padronUnid, vector<Operador>& padronOp, v
    bool validID=false;
    do {
       if (!leerEntero("\nID del servicio PENDIENTE a modificar: ", idServE)){
-         cout<<"\n\033[33m[CANCELADO] Proceso cancelado. No se guardaron cambios.\033[0m\n";
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Modificación de servicio anulada.\n";
          pausar();
          return;
       }
@@ -1677,7 +1649,7 @@ void modificarServicio(vector<Unidad>& padronUnid, vector<Operador>& padronOp, v
          case '3': modificarDestinoServ(historial[indexServE]); break;
          case '0': break; // Regresa al menu principal
          default:
-            cout<<"\n\033[31m[ERROR] Opcion no valida.\033[0m\n";
+            cout<<"\n\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Opción no válida. Intente de nuevo.\n";
             pausar();
             break;
       }
@@ -1702,7 +1674,7 @@ void modificarDatos(vector<Unidad>& padronUnid, vector<Operador>& padronOp, vect
          case '3': modificarServicio(padronUnid, padronOp, historial); break;
          case '0': break; // Cancelar sin hacer nada
          default:
-            cout<<"\n\033[31m[ERROR] Opción no valida.\033[0m\n";
+            cout<<"\n\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Opción no válida. Intente de nuevo.\n";
             pausar();
             break;
       }
@@ -1722,7 +1694,7 @@ void eliminarUnidad(vector<Unidad>& padron){
       }
    }
    if (indexUnid.empty()){
-      cout<<"\033[33m[ALERTA] Ninguna UNIDAD se puede eliminar (todas están ASIGNADAS).\033[0m\n";
+      cout<<"\033[33m▌ \033[0m"<<"\033[2;30;43m ALERTA \033[0m"<<" Ninguna unidad se puede eliminar (todas están ASIGNADAS).\n";
       pausar();
       return;
    }
@@ -1741,7 +1713,7 @@ void eliminarUnidad(vector<Unidad>& padron){
    bool validCod=false;
    do {
       if (!leerEntero("\nCÓDIGO de la UNIDAD a eliminar: ", codUnidE)){
-         cout<<"\n\033[33m[CANCELADO] Proceso cancelado. No se elimino nada.\033[0m\n";
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Eliminación de unidad anulada.\n";
          pausar();
          return;
       }
@@ -1757,12 +1729,12 @@ void eliminarUnidad(vector<Unidad>& padron){
 
    cout<<"\n\033[31m[!] Esta a punto de ELIMINAR la unidad "<<codUnidE<<" (placa "<<padron[indexUnidE].getPlaca()<<"). Esta accion no se puede deshacer.\033[0m\n";
    if (!confirmarAccion("¿Confirma la eliminación?")){
-      cout<<"\n\033[33m[CANCELADO] No se eliminó la unidad.\033[0m\n";
+      cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Eliminación de unidad anulada.\n";
       pausar();
       return;
    }
    padron.erase(padron.begin()+indexUnidE);
-   cout<<"\n\033[32m[EXITO] La unidad "<<codUnidE<<" fue eliminada del padron.\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" La unidad "<<codUnidE<<" fue eliminada del padrón de unidades.\n";
    pausar();
 }
 
@@ -1778,7 +1750,7 @@ void eliminarOperador(vector<Operador>& padron){
       }
    }
    if (indexOp.empty()){
-      cout<<"\033[33m[ALERTA] Ningún OPERADOR se puede eliminar (todos estan ASIGNADOS).\033[0m\n";
+      cout<<"\033[33m▌ \033[0m"<<"\033[2;30;43m ALERTA \033[0m"<<" Ningún operador se puede eliminar (todos están ASIGNADOS).\n";
       pausar();
       return;
    }
@@ -1800,7 +1772,7 @@ void eliminarOperador(vector<Operador>& padron){
    bool validCod=false;
    do {
       if (!leerEntero("\nCÓDIGO del OPERADOR a eliminar: ", codOpE)){
-         cout<<"\n\033[33m[CANCELADO] Proceso cancelado. No se elimino nada.\033[0m\n";
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Eliminación de operador anulada.\n";
          pausar();
          return;
       }
@@ -1816,19 +1788,16 @@ void eliminarOperador(vector<Operador>& padron){
 
    cout<<"\n\033[31m[!] Esta a punto de ELIMINAR al operador "<<codOpE<<" ("<<padron[indexOpE].getNombreCompleto()<<"). Esta accion no se puede deshacer.\033[0m\n";
    if (!confirmarAccion("¿Confirma la eliminación?")){
-      cout<<"\n\033[33m[CANCELADO] No se eliminó el operador.\033[0m\n";
+      cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Eliminación de operador anulada.\n";
       pausar();
       return;
    }
 
    padron.erase(padron.begin()+indexOpE);
-   cout<<"\n\033[32m[EXITO] El operador "<<codOpE<<" fue eliminado del padron.\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" El operador "<<codOpE<<" fue eliminado del padrón de operadores.\n";
    pausar();
 }
 
-// Elimina un servicio del historial. Solo se pueden eliminar servicios
-// "Pendiente": uno "Activo" o "Completado" ya forma parte de la trazabilidad
-// real de operaciones y no deberia poder borrarse por aqui.
 void eliminarServicio(vector<Servicio>& historial, vector<Unidad>& padronUnid, vector<Operador>& padronOp){
    limpiarPantalla();
    titulo("ELIMINAR SERVICIO", 2);
@@ -1841,7 +1810,7 @@ void eliminarServicio(vector<Servicio>& historial, vector<Unidad>& padronUnid, v
       }
    }
    if (indexPend.empty()){
-      cout<<"\033[33m[ALERTA] No hay servicios en estado PENDIENTE para eliminar.\033[0m\n";
+      cout<<"\033[33m▌ \033[0m"<<"\033[2;30;43m ALERTA \033[0m"<<" No hay servicios en estado PENDIENTE para eliminar.\n";
       pausar();
       return;
    }
@@ -1864,7 +1833,7 @@ void eliminarServicio(vector<Servicio>& historial, vector<Unidad>& padronUnid, v
    bool validID=false;
    do {
       if (!leerEntero("\nID del servicio PENDIENTE a eliminar: ", idServE)){
-         cout<<"\n\033[33m[CANCELADO] Proceso cancelado. No se elimino nada.\033[0m\n";
+         cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Eliminación de servicio anulada.\n";
          pausar();
          return;
       }
@@ -1879,7 +1848,7 @@ void eliminarServicio(vector<Servicio>& historial, vector<Unidad>& padronUnid, v
    } while (!validID);
    cout<<"\n\033[31m[!] Esta a punto de ELIMINAR el servicio "<<idServE<<" (destino: "<<historial[indexServE].getDestino()<<"). Esta accion no se puede deshacer.\033[0m\n";
    if (!confirmarAccion("¿Confirma la eliminacion?")){
-      cout<<"\n\033[33m[CANCELADO] No se elimino el servicio.\033[0m\n";
+      cout<<"\n\033[93m▌ \033[0m"<<"\033[2;30;103m CANCELADO \033[0m"<<" Eliminación de servicio anulada.\n";
       pausar();
       return;
    }
@@ -1899,8 +1868,8 @@ void eliminarServicio(vector<Servicio>& historial, vector<Unidad>& padronUnid, v
    padronUnid[indexUnid].setEstado("Disponible");
    padronOp[indexOp].setEstado("Disponible");
    historial.erase(historial.begin()+indexServE);
-   cout<<"\n\033[32m[EXITO] El servicio "<<idServE<<" fue eliminado del historial.\033[0m\n";
-   cout<<"\n\033[33m[!] NOTA: La UNIDAD "<<padronUnid[indexUnid].getCodigo()<<" y el OPERADOR "<<padronOp[indexOp].getCodigo()<<" fueron marcados como DISPONIBLE.\033[0m\n";
+   cout<<"\n\033[32m▌ \033[0m"<<"\033[2;30;42m ÉXITO \033[0m"<<" El servicio "<<idServE<<" fue eliminado del historial de servicios.\n";
+   cout<<"\n\033[90m▌ \033[0m"<<"\033[2;30;100m NOTA \033[0m"<<" La unidad "<<padronUnid[indexUnid].getCodigo()<<" y el operador "<<padronOp[indexOp].getCodigo()<<" fueron marcados como DISPONIBLE.\n";
    pausar();
 }
 
@@ -1922,7 +1891,7 @@ void eliminarRegistro(vector<Unidad>& padronUnid, vector<Operador>& padronOp, ve
          case '3': eliminarServicio(historial, padronUnid, padronOp); break;
          case '0': break; // Cancelar sin hacer nada
          default:
-            cout<<"\n\033[31m[ERROR] Opcion no valida.\033[0m\n";
+            cout<<"\n\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Opción no válida. Intente de nuevo.\n";
             pausar();
             break;
       }
@@ -1969,7 +1938,7 @@ int main()
                   case '2': mostrarPadronOp(padronOp); break;
                   case '0': break; // Sale del sub-menu sin hacer nada
                   default:
-                     cout<<"\n\033[31m[ERROR] Opcion no valida. Intente de nuevo...\033[0m\n";
+                     cout<<"\n\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Opción no válida. Intente de nuevo.\n";
                      pausar();
                      break;
                }
@@ -1996,7 +1965,7 @@ int main()
                   case '4': completarDescanso(padronUnid, padronOp); break;
                   case '0': break; // Sale del sub-menú sin hacer nada
                   default: 
-                     cout<<"\n\033[31m[ERROR] Opcion no valida. Intente de nuevo...\033[0m\n"; 
+                     cout<<"\n\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Opción no válida. Intente de nuevo.\n"; 
                      pausar(); 
                      break;
                }
@@ -2019,7 +1988,7 @@ int main()
                   case '4': eliminarRegistro(padronUnid, padronOp, historialServ); break;
                   case '0': break; // Sale del sub-menu sin hacer nada
                   default: 
-                     cout<<"\n\033[31m[ERROR] Opcion no valida. Intente de nuevo...\033[0m\n"; 
+                     cout<<"\n\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Opción no válida. Intente de nuevo.\n"; 
                      pausar(); 
                      break;
                }
@@ -2027,7 +1996,8 @@ int main()
             break;
          }
          case '0':{
-            cout<<"\nIniciando rutina de apagado...\n";
+            limpiarPantalla();
+            titulo("GUARDADO DE DATOS", 0);
             guardarUNIDADES(padronUnid);
             guardarOPERADORES(padronOp);
             guardarSERVICIOS(historialServ);
@@ -2035,14 +2005,14 @@ int main()
             break;
          }
          default:{
-            cout<<"\n\033[31m[ERROR] Opcion no valida. Intente de nuevo...\033[0m\n";
+            cout<<"\n\033[31m▌ \033[0m"<<"\033[2;30;41m ERROR \033[0m"<<" Opción no válida. Intente de nuevo.\n";
             pausar();
             break;
          }
       }
    } while(opc!='0');
 
-   cout<<"\nFIN DEL PROGRAMA\n";
+   cout<<"\n\033[93mFIN DEL PROGRAMA\n\033[0m";
    pausar();
    return 0;
 }
