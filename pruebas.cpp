@@ -149,48 +149,85 @@ int main()
 				break;
 			}
          case '4':{
-            // --- CAT 0: Título Principal del Programa (Hero Header) ---
-            // Fondo azul fuerte, letras blancas brillantes, con un bloque de acento.
-            cout << "\n\033[44;1;97m  ██  SISTEMA DE GESTIÓN DE BUSES V2.0  ██  \033[0m\n\n";
+            // ========================================================================
+            // FORMA 1: MINIMALISMO ABSOLUTO (Estilo Data Science)
+            // ========================================================================
+            cout << "\n\033[1;33m>>> FORMA 1: MINIMALISMO ABSOLUTO <<<\033[0m\n\n";
 
-            // --- CAT 1: Título de Módulo / Sección ---
-            // El estilo "Badge" (escarapela) que te gustó antes.
-            cout << "\n\033[1;36m ▌ \033[30;46m PROGRAMAR NUEVO SERVICIO \033[0m\n\n";
+            // --- TABLA 1: PEQUEÑA (Ej: Resumen de Operadores) ---
+            cout << "\033[1;96m" << left 
+                  << setw(8) << "COD" << setw(20) << "NOMBRES" << setw(15) << "ESTADO" << "\033[0m\n";
+            cout << "\033[90m" << fill(43, "─") << "\033[0m\n";
+            cout << left << setw(8) << "OP-01" << setw(20) << "PÉREZ, JUAN" << "\033[32m" << setw(15) << "DISPONIBLE" << "\033[0m\n";
+            cout << left << setw(8) << "OP-02" << setw(20) << "MENDOZA, LUIS" << "\033[31m" << setw(15) << "DESCANSO" << "\033[0m\n";
+            cout << left << setw(8) << "OP-03" << setw(20) << "SALAS, JOSÉ" << "\033[33m" << setw(15) << "EN RUTA" << "\033[0m\n";
 
-            // --- CAT 2: Título de Formulario / Sub-sección ---
-            // Un bloque lateral elegante, texto en blanco brillante y una sutil línea gris de base.
-            cout << "\n\033[1;34m ▍ \033[1;97mDatos del Operador\033[0m\n";
-            cout << "\033[90m └──────────────────────────────────────\033[0m\n";
 
-            // --- CAT 3: Separador de bloque ---
-            // Se acabaron los "====". Usamos una línea continua muy tenue y el texto coloreado.
-            cout << "\n\033[90m ────── \033[1;35mResumen de Ruta\033[90m ────── \033[0m\n\n";
+            // --- TABLA 2: MEDIANA (Ej: Historial de Servicios) ---
+            cout << "\n\n\033[1;96m" << left 
+                  << setw(6) << "ID" << setw(15) << "FECHA" << setw(12) << "UNIDAD" 
+                  << setw(12) << "PASAJ." << setw(20) << "DESTINO" << "\033[0m\n";
+            cout << "\033[90m" << fill(65, "─") << "\033[0m\n";
+            cout << left << setw(6) << "102" << setw(15) << "12/07/2026" << setw(12) << "UNID-44" 
+                  << setw(12) << "45/50" << setw(20) << "AREQUIPA" << "\n";
+            cout << left << setw(6) << "103" << setw(15) << "12/07/2026" << setw(12) << "UNID-12" 
+                  << setw(12) << "50/50" << setw(20) << "LIMA" << "\n";
+            cout << left << setw(6) << "104" << setw(15) << "13/07/2026" << setw(12) << "UNID-09" 
+                  << setw(12) << "30/40" << setw(20) << "TACNA" << "\n";
 
-            // --- CAT 4: Título de Lista / Tabla ---
-            // Super minimalista, gris tenue, usa una viñeta moderna de flecha.
-            cout << "\n\033[1;90m › Servicios Pendientes \033[0m\n\n";
 
-            // --- CAT 0: Título Principal del Programa (Hero Header) ---
-            // Dos líneas gruesas enmarcando el texto, sin cerrar los lados para que respire.
-            cout << "\n\033[38;5;63m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m\n";
-            cout << "\033[1;97m               MENU PRINCIPAL               \033[0m\n";
-            cout << "\033[38;5;63m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m\n\n";
+            // --- TABLA 3: GRANDE (Ej: Reporte Maestro de Flota) ---
+            cout << "\n\n\033[1;96m" << left 
+                  << setw(10) << "PLACA" << setw(15) << "CHASIS" << setw(12) << "AÑO" 
+                  << setw(15) << "KILOMETRAJE" << setw(15) << "MANTENIMIENTO" << setw(15) << "ESTADO" << "\033[0m\n";
+            cout << "\033[90m" << fill(82, "─") << "\033[0m\n";
+            cout << left << setw(10) << "V2A-991" << setw(15) << "MERCEDES-B" << setw(12) << "2023" 
+                  << setw(15) << "45,000 km" << setw(15) << "12/08/2026" << "\033[32m" << setw(15) << "OPERATIVO" << "\033[0m\n";
+            cout << left << setw(10) << "Z4X-112" << setw(15) << "VOLVO B430" << setw(12) << "2021" 
+                  << setw(15) << "120,500 km" << setw(15) << "01/07/2026" << "\033[31m" << setw(15) << "EN TALLER" << "\033[0m\n";
+            cout << left << setw(10) << "A8B-774" << setw(15) << "SCANIA K40" << setw(12) << "2025" 
+                  << setw(15) << "12,300 km" << setw(15) << "10/11/2026" << "\033[32m" << setw(15) << "OPERATIVO" << "\033[0m\n";
 
-            // --- CAT 1: Título de Módulo / Sección ---
-            // Un borde superior flotante con esquinas redondeadas.
-            cout << "\n\033[36m╭───────── \033[1;97mMODULO DE RUTAS\033[36m ─────────╮\033[0m\n\n";
 
-            // --- CAT 2: Título de Formulario / Sub-sección ---
-            // Una flecha de continuidad que nace del borde izquierdo.
-            cout << "\n\033[34m ╰─► \033[1;97mDetalles del Pasajero\033[0m\n";
+            cout << "\n\n";
 
-            // --- CAT 3: Separador de bloque ---
-            // Un rombo como viñeta central.
-            cout << "\n\033[35m ◈ \033[1;97mInformación Adicional\033[0m\n\n";
+            // ========================================================================
+            // FORMA 3: CABECERA EN BLOQUE (Estilo Badge Table)
+            // ========================================================================
+            cout << "\033[1;33m>>> FORMA 3: CABECERA EN BLOQUE <<<\033[0m\n\n";
 
-            // --- CAT 4: Título de Lista / Tabla ---
-            // Línea punteada sutil.
-            cout << "\n\033[90m ┄┄ \033[37mHistorial de Viajes\033[90m ┄┄\033[0m\n";
+            // --- TABLA 1: PEQUEÑA ---
+            // \033[30;46m = Letra negra (30) sobre fondo Cian (46). 
+            // Nota el espacio extra al inicio y final del string para que el color abarque todo el bloque.
+            cout << "\033[2;30;106m " << left 
+                  << setw(8) << "COD" << setw(20) << "NOMBRES" << setw(14) << "ESTADO" << " \033[0m\n";
+            cout << " \033[36m" << left << setw(8) << "OP-01" << "\033[0m" << setw(20) << "PÉREZ, JUAN" << "\033[32m" << setw(15) << "DISPONIBLE" << "\033[0m\n";
+            cout << " \033[36m" << left << setw(8) << "OP-02" << "\033[0m" << setw(20) << "MENDOZA, LUIS" << "\033[31m" << setw(15) << "DESCANSO" << "\033[0m\n";
+            cout << " \033[36m" << left << setw(8) << "OP-03" << "\033[0m" << setw(20) << "SALAS, JOSÉ" << "\033[33m" << setw(15) << "EN RUTA" << "\033[0m\n";
+
+
+            // --- TABLA 2: MEDIANA ---
+            cout << "\n\n\033[2;30;107m " << left // Fondo Blanco (47)
+                  << setw(6) << "ID" << setw(15) << "FECHA" << setw(12) << "UNIDAD" 
+                  << setw(12) << "PASAJ." << setw(19) << "DESTINO" << " \033[0m\n";
+            cout << " \033[36m" << left << setw(6) << "102" << "\033[0m" << setw(15) << "12/07/2026" << setw(12) << "UNID-44" 
+                  << setw(12) << "45/50" << setw(20) << "AREQUIPA" << "\n";
+            cout << " \033[36m" << left << setw(6) << "103" << "\033[0m" << setw(15) << "12/07/2026" << setw(12) << "UNID-12" 
+                  << setw(12) << "50/50" << setw(20) << "LIMA" << "\n";
+            cout << " \033[36m" << left << setw(6) << "104" << "\033[0m" << setw(15) << "13/07/2026" << setw(12) << "UNID-09" 
+                  << setw(12) << "30/40" << setw(20) << "TACNA" << "\n";
+
+
+            // --- TABLA 3: GRANDE ---
+            cout << "\n\n\033[2;30;106m " << left // Fondo Cian (46)
+                  << setw(10) << "PLACA" << setw(15) << "CHASIS" << setw(12) << "AÑO" 
+                  << setw(15) << "KILOMETRAJE" << setw(15) << "MANTENIMIENTO" << setw(14) << "ESTADO" << " \033[0m\n";
+            cout << " " << left << setw(10) << "V2A-991" << setw(15) << "MERCEDES-B" << setw(12) << "2023" 
+                  << setw(15) << "45,000 km" << setw(15) << "12/08/2026" << "\033[32m" << setw(15) << "OPERATIVO" << "\033[0m\n";
+            cout << " " << left << setw(10) << "Z4X-112" << setw(15) << "VOLVO B430" << setw(12) << "2021" 
+                  << setw(15) << "120,500 km" << setw(15) << "01/07/2026" << "\033[31m" << setw(15) << "EN TALLER" << "\033[0m\n";
+            cout << " " << left << setw(10) << "A8B-774" << setw(15) << "SCANIA K40" << setw(12) << "2025" 
+                  << setw(15) << "12,300 km" << setw(15) << "10/11/2026" << "\033[32m" << setw(15) << "OPERATIVO" << "\033[0m\n";
             break;
          }
 			case '0':{
