@@ -1,0 +1,10 @@
+1,201,902,40,ATE,Completado
+2,202,905,35,CALLAO,Pendiente
+3,202,904,42,SAN ISIDRO,Completado
+4,103,906,7,MIRAFLORES,Completado
+5,302,908,30,LURÍN,Completado
+6,204,909,44,LOS OLIVOS,Completado
+7,303,905,20,ANCÓN,Completado
+8,203,906,15,COMAS,Pendiente
+9,102,901,2,CALLAO,Completado
+10,301,906,20,PACHACUTEC,Completado

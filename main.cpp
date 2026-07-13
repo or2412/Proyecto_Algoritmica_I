@@ -284,7 +284,6 @@ void puntosCarga(int repeticion, unsigned int retraso){
 void menuPrincipal(){
    limpiarPantalla();
    titulo("SISTEMA DE GESTIÓN DE TRANSPORTE", 0);
-   //"\033[96m▌ \033[0m"<<"\033[2;30;106m 1 \033[0m"<<" 
    cout<<"\033[96m  ▌ \033[0m"<<"\033[2;30;106m"<<"[1]"<<"\033[0m"<<" PADRÓN GENERAL\n";
    cout<<"\033[96m  ▌ \033[0m"<<"\033[2;30;106m"<<"[2]"<<"\033[0m"<<" HISTORIAL DE SERVICIOS\n";
    cout<<"\033[96m  ▌ \033[0m"<<"\033[2;30;106m"<<"[3]"<<"\033[0m"<<" OPERACIONES\n";
@@ -675,18 +674,19 @@ void imprimirTablaUnid(vector<Unidad>& padron){
       return a.getCodigo()<b.getCodigo();
    });
    cout<<"\033[2;30;106m "<<left<<setw(10)<<"CÓDIGO"<<setw(10)<<"PLACA"<<setw(12)<<"CAPACIDAD"<<setw(11)<<"ESTADO"<<"\033[0m"<<endl;
-   cout<<"\033[36m"<<llenar(44, "-")<<"\033[0m\n";
+   //cout<<"\033[36m"<<llenar(44, "-")<<"\033[0m\n";
    for (size_t i=0; i<padron.size(); i++){
-      // Colores basicos ASCII  (Verde: "Disponible", Rojo: "Asignado", Amarillo: "En reposo")
       if(padron[i].getEstado()=="Disponible") cout<<"\033[32m";
       else if(padron[i].getEstado()=="Asignado") cout<<"\033[31m";
       else cout<<"\033[33m";
-      //Información coloreada
       cout<<left<<" "
-      <<setw(9)<<padron[i].getCodigo() 
+      <<setw(9)<<padron[i].getCodigo()<<"\033[0m" 
       <<setw(10)<<padron[i].getPlaca() 
-      <<setw(12)<<padron[i].getCapacidad() 
-      <<setw(11)<<padron[i].getEstado()<<"\033[0m"<<endl;
+      <<setw(12)<<padron[i].getCapacidad(); 
+      if(padron[i].getEstado()=="Disponible") cout<<"\033[32m";
+      else if(padron[i].getEstado()=="Asignado") cout<<"\033[31m";
+      else cout<<"\033[33m";
+      cout<<setw(11)<<padron[i].getEstado()<<"\033[0m"<<endl;
    }
 }
 
@@ -707,21 +707,22 @@ void imprimirTablaOp(vector<Operador>& padron){
    sort(padron.begin(), padron.end(), [](Operador &a, Operador &b){
       return a.getCodigo()<b.getCodigo();
    });
-   cout<<"\033[2;30;106m "<<left<<setw(10)<<"CÓDIGO"<<setw(12)<<"DNI"<<setw(38)<<"NOMBRE COMPLETO"<<setw(20)<<"ESTADO"<<"\033[0m"<<endl;
-   cout<<"\033[36m"<<llenar(75, "-")<<"\033[0m\n";
+   cout<<"\033[2;30;106m "<<left<<setw(10)<<"CÓDIGO"<<setw(12)<<"DNI"<<setw(38)<<"NOMBRE COMPLETO"<<setw(11)<<"ESTADO"<<"\033[0m"<<endl;
+   //cout<<"\033[36m"<<llenar(75, "-")<<"\033[0m\n";
    for (size_t i=0; i<padron.size(); i++){
-      // Colores basicos ASCII  (Verde: "Disponible", Rojo: "Asignado", Amarillo: "En reposo")
       if(padron[i].getEstado()=="Disponible") cout<<"\033[32m";
       else if(padron[i].getEstado()=="Asignado") cout<<"\033[31m";
       else cout<<"\033[33m";
-      //Información coloreada
       string nombreCompleto=padron[i].getNombreCompleto();
       int extras=compensacionUTF8(nombreCompleto);
       cout<<left<<" "
-      <<setw(9)<<padron[i].getCodigo() 
+      <<setw(9)<<padron[i].getCodigo()<<"\033[0m" 
       <<setw(12)<<padron[i].getDNI() 
-      <<setw(38+extras)<<nombreCompleto 
-      <<setw(20)<<padron[i].getEstado()<<"\033[0m"<<endl;
+      <<setw(38+extras)<<nombreCompleto; 
+      if(padron[i].getEstado()=="Disponible") cout<<"\033[32m";
+      else if(padron[i].getEstado()=="Asignado") cout<<"\033[31m";
+      else cout<<"\033[33m";
+      cout<<setw(11)<<padron[i].getEstado()<<"\033[0m"<<endl;
    }
 }
 
@@ -745,23 +746,24 @@ void mostrarHistorialServ(vector<Servicio>& historial){
       sort(historial.begin(), historial.end(), [](Servicio &a, Servicio &b){
          return a.getID()<b.getID();
       });
-      cout<<"\033[2;30;106m "<<left<<setw(5)<<"ID"<<setw(11)<<"COD-UNID"<<setw(9)<<"COD-OP"<<setw(13)<<"N° PAS."<<setw(20)<<"DESTINO"<<setw(18)<<"ESTADO"<<"\033[0m"<<endl;
-      cout<<"\033[36m"<<llenar(73, "-")<<"\033[0m\n";
+      cout<<"\033[2;30;106m "<<left<<setw(5)<<"ID"<<setw(11)<<"COD-UNID"<<setw(9)<<"COD-OP"<<setw(13)<<"N° PAS."<<setw(20)<<"DESTINO"<<setw(13)<<"ESTADO"<<"\033[0m"<<endl;
+      //cout<<"\033[36m"<<llenar(73, "-")<<"\033[0m\n";
       for (size_t i=0; i<historial.size(); i++){
-         // Colores basicos ASCII  (Verde: "Completado", Rojo: "Activo", Amarillo: "Pendiente")
          if(historial[i].getEstado()=="Completado") cout<<"\033[32m";
          else if(historial[i].getEstado()=="Activo") cout<<"\033[31m";
          else cout<<"\033[33m";
-         //Información coloreada
          string destino=historial[i].getDestino();
          int extras=compensacionUTF8(destino);
          cout<<left<<" "
-         <<setw(5)<<historial[i].getID() 
+         <<setw(5)<<historial[i].getID()<<"\033[0m" 
          <<setw(11)<<historial[i].getCodigoUnid() 
          <<setw(9)<<historial[i].getCodigoOp() 
          <<setw(12)<<historial[i].getNumPasajeros() 
-         <<setw(20+extras)<<destino 
-         <<setw(18)<<historial[i].getEstado()<<"\033[0m"<<endl;
+         <<setw(20+extras)<<destino;
+         if(historial[i].getEstado()=="Completado") cout<<"\033[32m";
+         else if(historial[i].getEstado()=="Activo") cout<<"\033[31m";
+         else cout<<"\033[33m";
+         cout<<setw(13)<<historial[i].getEstado()<<"\033[0m"<<endl;
       }
    }
    pausar();
@@ -783,7 +785,7 @@ int seleccionarUnidDisponible(vector<Unidad>& padron, int capacidadMinima){
 
    cout<<endl; titulo("UNIDADES DISPONIBLES", 3); cout<<endl;
    cout<<"\033[2;30;106m "<<left<<setw(10)<<"CÓDIGO"<<setw(15)<<"PLACA"<<setw(11)<<"CAPACIDAD"<<"\033[0m"<<endl;
-   cout<<"\033[36m"<<llenar(36, "-")<<"\033[0m\n";
+   //cout<<"\033[36m"<<llenar(36, "-")<<"\033[0m\n";
    for (size_t i=0; i<indexUnid.size(); i++){
       cout<<left<<" "
       <<setw(9)<<padron[indexUnid[i]].getCodigo()
@@ -822,7 +824,7 @@ int seleccionarOpDisponible(vector<Operador>& padron){
 
    cout<<endl; titulo("OPERADORES DISPONIBLES", 3); cout<<endl;
    cout<<"\033[2;30;106m "<<left<<setw(10)<<"CÓDIGO"<<setw(12)<<"DNI"<<setw(38)<<"NOMBRE COMPLETO"<<"\033[0m"<<endl;
-   cout<<"\033[36m"<<llenar(62, "-")<<"\033[0m\n";
+   //cout<<"\033[36m"<<llenar(62, "-")<<"\033[0m\n";
    for (size_t i=0; i<indexOp.size(); i++){
       string nombreCompleto=padron[indexOp[i]].getNombreCompleto();
       int extras=compensacionUTF8(nombreCompleto);
@@ -915,7 +917,7 @@ void procesarSalida(vector<Servicio>& historial){
    cout<<endl;
    titulo("SERVICIOS PENDIENTES DE SALIDA", 3); cout<<endl;
    cout<<"\033[2;30;106m "<<left<<setw(5)<<"ID"<<setw(11)<<"COD-UNID"<<setw(9)<<"COD-OP"<<setw(13)<<"N° PAS."<<setw(20)<<"DESTINO"<<"\033[0m"<<endl;
-   cout<<"\033[36m"<<llenar(58, "-")<<"\033[0m\n";
+   //cout<<"\033[36m"<<llenar(58, "-")<<"\033[0m\n";
    for (size_t i=0; i<indexPend.size(); i++){
       string destino=historial[indexPend[i]].getDestino();
       int extras=compensacionUTF8(destino);
@@ -972,7 +974,7 @@ void procesarArribo(vector<Unidad>& padronUnid, vector<Operador>& padronOp, vect
    //Mostrar lista de servicios activos
    cout<<endl; titulo("SERVICIOS ACTIVOS (EN RUTA)", 3); cout<<endl;
    cout<<"\033[2;30;106m "<<left<<setw(5)<<"ID"<<setw(11)<<"COD-UNID"<<setw(9)<<"COD-OP"<<setw(13)<<"N° PAS."<<setw(20)<<"DESTINO"<<"\033[0m"<<endl;
-   cout<<"\033[36m"<<llenar(58, "-")<<"\033[0m\n";
+   //cout<<"\033[36m"<<llenar(58, "-")<<"\033[0m\n";
    for (size_t i=0; i<indexActivos.size(); i++){
       string destino=historial[indexActivos[i]].getDestino();
       int extras=compensacionUTF8(destino);
@@ -1046,7 +1048,7 @@ void completarDescansoUnid(vector<Unidad>& padron){
    //Mostrar lista de unidades en reposo
    titulo("UNIDADES EN REPOSO", 4); cout<<endl;
    cout<<"\033[2;30;106m "<<left<<setw(10)<<"CÓDIGO"<<setw(15)<<"PLACA"<<setw(11)<<"CAPACIDAD"<<"\033[0m"<<endl;
-   cout<<"\033[36m"<<llenar(36, "-")<<"\033[0m\n";
+   //cout<<"\033[36m"<<llenar(36, "-")<<"\033[0m\n";
    for (size_t i=0; i<indexReposo.size(); i++){
       cout<<left<<" "
       <<setw(9)<<padron[indexReposo[i]].getCodigo()
@@ -1100,7 +1102,7 @@ void completarDescansoOp(vector<Operador>& padron){
    //Mostrar lista de operadores en reposo
    titulo("OPERADORES EN REPOSO", 4); cout<<endl;
    cout<<"\033[2;30;106m "<<left<<setw(10)<<"CÓDIGO"<<setw(12)<<"DNI"<<setw(40)<<"NOMBRE COMPLETO"<<"\033[0m"<<endl;
-   cout<<"\033[36m"<<llenar(62, "-")<<"\033[0m\n";
+   //cout<<"\033[36m"<<llenar(62, "-")<<"\033[0m\n";
    for (size_t i=0; i<indexReposo.size(); i++){
       string nombreCompleto=padron[indexReposo[i]].getNombreCompleto();
       int extras=compensacionUTF8(nombreCompleto);
@@ -1606,7 +1608,7 @@ void modificarServicio(vector<Unidad>& padronUnid, vector<Operador>& padronOp, v
 
    titulo("SERVICIOS PENDIENTES", 4); cout<<endl;
    cout<<"\033[2;30;106m "<<left<<setw(5)<<"ID"<<setw(11)<<"COD-UNID"<<setw(9)<<"COD-OP"<<setw(13)<<"N° PAS."<<setw(20)<<"DESTINO"<<"\033[0m"<<endl;
-   cout<<"\033[36m"<<llenar(58, "-")<<"\033[0m\n";
+   //cout<<"\033[36m"<<llenar(58, "-")<<"\033[0m\n";
    for (size_t i=0; i<indexPend.size(); i++){
       string destino=historial[indexPend[i]].getDestino();
       int extras=compensacionUTF8(destino);
@@ -1706,7 +1708,7 @@ void eliminarUnidad(vector<Unidad>& padron){
 
    titulo("UNIDADES ELEGIBLES PARA ELIMINAR", 4); cout<<endl;
    cout<<"\033[2;30;106m "<<left<<setw(10)<<"CÓDIGO"<<setw(10)<<"PLACA"<<setw(12)<<"CAPACIDAD"<<setw(11)<<"ESTADO"<<"\033[0m"<<endl;
-   cout<<"\033[36m"<<llenar(44, "-")<<"\033[0m\n";
+   //cout<<"\033[36m"<<llenar(44, "-")<<"\033[0m\n";
    for (size_t i=0; i<indexUnid.size(); i++){
       cout<<left<<" "
       <<setw(9)<<padron[indexUnid[i]].getCodigo()
@@ -1763,7 +1765,7 @@ void eliminarOperador(vector<Operador>& padron){
 
    titulo("OPERADORES ELEGIBLES PARA ELIMINAR", 4); cout<<endl;
    cout<<"\033[2;30;106m "<<left<<setw(10)<<"CÓDIGO"<<setw(12)<<"DNI"<<setw(38)<<"NOMBRE COMPLETO"<<setw(20)<<"ESTADO"<<"\033[0m"<<endl;
-   cout<<"\033[36m"<<llenar(75, "-")<<"\033[0m\n";
+   //cout<<"\033[36m"<<llenar(75, "-")<<"\033[0m\n";
    for (size_t i=0; i<indexOp.size(); i++){
       string nombreCompleto=padron[indexOp[i]].getNombreCompleto();
       int extras=compensacionUTF8(nombreCompleto);
@@ -1824,7 +1826,7 @@ void eliminarServicio(vector<Servicio>& historial, vector<Unidad>& padronUnid, v
 
    titulo("SERVICIOS PENDIENTES", 4); cout<<endl;
    cout<<"\033[2;30;106m "<<left<<setw(5)<<"ID"<<setw(11)<<"COD-UNID"<<setw(9)<<"COD-OP"<<setw(13)<<"N° PAS."<<setw(20)<<"DESTINO"<<"\033[0m"<<endl;
-   cout<<"\033[36m"<<llenar(58, "-")<<"\033[0m\n";
+   //cout<<"\033[36m"<<llenar(58, "-")<<"\033[0m\n";
    for (size_t i=0; i<indexPend.size(); i++){
       string destino=historial[indexPend[i]].getDestino();
       int extras=compensacionUTF8(destino);

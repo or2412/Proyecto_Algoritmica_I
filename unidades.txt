@@ -1,0 +1,13 @@
+F3V-420,101,8,Disponible
+B7C-109,102,8,En reposo
+C9X-304,103,8,Disponible
+A1B-567,201,45,En reposo
+M4T-202,202,45,Asignado
+D2F-711,203,45,Asignado
+F1H-533,204,45,En reposo
+ORO-129,205,45,Disponible
+BAC-123,206,45,Disponible
+W9Z-881,301,39,Disponible
+E8G-922,302,39,Disponible
+G5J-644,303,39,En reposo
+EST-612,304,39,Disponible
